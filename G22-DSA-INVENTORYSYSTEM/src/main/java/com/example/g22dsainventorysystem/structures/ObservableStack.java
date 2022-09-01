@@ -15,12 +15,7 @@ public class ObservableStack<T> extends SimpleListProperty<T> {
         this.set(FXCollections.observableList(this.stack));
     }
 
-    /**
-     * Places the item at the top of the stack
-     *
-     * @param item the item
-     * @return the item that was just pushed
-     */
+
     public T push(T item) {
         stack.push(item);
         fireValueChangedEvent(new StackChange(this.get(),
@@ -28,10 +23,6 @@ public class ObservableStack<T> extends SimpleListProperty<T> {
         return item;
     }
 
-    /**
-     * @return the item at the top of the stack granted that the stack is not empty
-     * @throws NoSuchElementException if the stack is empty
-     */
     public T pop() throws NoSuchElementException {
         T temp = stack.pop();
         fireValueChangedEvent(new StackChange(this.get(),
@@ -39,27 +30,14 @@ public class ObservableStack<T> extends SimpleListProperty<T> {
         return temp;
     }
 
-    /**
-     * Pushes the element to the top of the stack
-     *
-     * @param element the element to add
-     * @return Always returns true
-     * @see #push(Object)
-     */
+
     @Override
     public boolean add(T element) {
         push(element);
         return true;
     }
 
-    /**
-     * Removes an element at the given index
-     *
-     * @param i the index to remove from
-     * @return The element that was removed
-     * @throws IllegalArgumentException if i is not 0. The stack can only access the top element
-     * @see #pop()
-     */
+
     @Override
     public T remove(int i) throws IllegalArgumentException {
         if (0 == i) {
@@ -68,26 +46,13 @@ public class ObservableStack<T> extends SimpleListProperty<T> {
         throw new IllegalArgumentException("Can only modify the top of the stack " + i);
     }
 
-    /**
-     * Effectively empties the stack given that the stack is not alredy empty
-     *
-     * @return true if the stack was emptied
-     * @throws NoSuchElementException if the stack is already empty
-     */
+
     public boolean removeAll() throws NoSuchElementException {
         this.get().remove(0, getSize());
         return true;
     }
 
-    /**
-     * Adds an element to the given index
-     *
-     * @param i the index to add the element at
-     * @param element the element to add to the stack
-     * @throws IllegalArgumentException if the index specified is not 0. Only the top of the stack
-     * is accessible
-     * @see #push(Object)
-     */
+
     @Override
     public void add(int i, T element) throws IllegalArgumentException {
         if (0 == i) {
@@ -96,13 +61,7 @@ public class ObservableStack<T> extends SimpleListProperty<T> {
         throw new IllegalArgumentException("Can only modify the top of the stack " + i);
     }
 
-    /**
-     * Adds the elements from the collection into the stack in the order they are specified
-     *
-     * @param elements the collection to be added to this stack
-     * @return true
-     * @throws NullPointerException if the collection is null
-     */
+
     @Override
     public boolean addAll(Collection<? extends T> elements) throws NullPointerException {
         elements.forEach(stack::push);
@@ -111,13 +70,7 @@ public class ObservableStack<T> extends SimpleListProperty<T> {
         return true;
     }
 
-    /**
-     * Adds the contents of the array into the stack
-     *
-     * @param elements the array of elememts to add
-     * @return true
-     * @see #addAll(Collection)
-     */
+
     @Override
     public boolean addAll(T... elements) {
         return addAll(Arrays.asList(elements));
@@ -128,26 +81,13 @@ public class ObservableStack<T> extends SimpleListProperty<T> {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * Attempt to remove an arbitrary object from the stack is not permitted
-     *
-     * @param obj The object to remove
-     * @return Nothing
-     * @throws UnsupportedOperationException Removing an arbitrary object is not permitted Use
-     * {@link #pop()}
-     */
+
     @Override
     public boolean remove(Object obj) throws UnsupportedOperationException {
         throw new UnsupportedOperationException("Operation not allowed, use pop");
     }
 
-    /**
-     * Attempt to remove a range of objects from the stack, this is also not permitted
-     *
-     * @param from Start removing from here
-     * @param to   To here
-     * @throws UnsupportedOperationException {@link #remove(Object)}
-     */
+
     @Override
     public void remove(int from, int to) throws UnsupportedOperationException {
         throw new UnsupportedOperationException("Operation not allowed, use pop");
@@ -163,32 +103,17 @@ public class ObservableStack<T> extends SimpleListProperty<T> {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * Used to determine what change occured in the stack
-     */
+
     private enum ChangeType {
         PUSH, POP;
 
-        /**
-         * The object that was changed
-         */
         private List changedObj;
 
-        /**
-         * The changed object(s) are packaged as a list
-         *
-         * @return The list of changed objects
-         */
+
         public List getChangedObj() {
             return changedObj;
         }
 
-        /**
-         * Method to accept the changed object
-         *
-         * @param obj the list of objects that were changed in the stack
-         * @return this enum
-         */
         public ChangeType setChangedObj(List obj) {
             this.changedObj = obj;
             return this;
@@ -235,11 +160,7 @@ public class ObservableStack<T> extends SimpleListProperty<T> {
             onChange = false;
         }
 
-        /**
-         * Because this is a stack, all push and pop happen to the first item in the stack
-         *
-         * @return index of the first item
-         */
+
         @Override
         public int getFrom() {
             if (!onChange) {
@@ -249,9 +170,7 @@ public class ObservableStack<T> extends SimpleListProperty<T> {
             return 0;
         }
 
-        /**
-         * @return the size of the list returned which indicates the end of the change
-         */
+
         @Override
         public int getTo() {
             if (!onChange) {

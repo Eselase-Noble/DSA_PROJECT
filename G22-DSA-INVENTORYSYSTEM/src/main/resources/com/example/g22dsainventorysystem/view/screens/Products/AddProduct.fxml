@@ -16,8 +16,14 @@
             </Label>
             <GridPane hgap="1.0" layoutX="17.0" layoutY="60.0">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="91.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="91.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="91.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="109.0" minWidth="10.0" prefWidth="109.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -43,60 +49,58 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label text="Product Id :" />
-                  <RadioButton fx:id="rbStatic" mnemonicParsing="false" text="Static" GridPane.columnIndex="1" />
-                  <RadioButton fx:id="rbSeq" mnemonicParsing="false" text="Sequential" GridPane.columnIndex="2" />
-                  <Label text="Product Name :" GridPane.columnSpan="2" GridPane.rowIndex="2" />
-                  <Label text="Quantity :" GridPane.rowIndex="4" />
-                  <Label text="Purses Price :" GridPane.rowIndex="6" />
-                  <Label text="Sell Price" GridPane.rowIndex="8" />
-                  <Label text="Description" GridPane.rowIndex="10" />
-                  <Label text="Supplied By :" GridPane.columnIndex="4" />
-                  <Label text="Brand :" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                  <Label text="Category :" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                  <Label text="Unit :" GridPane.columnIndex="4" GridPane.rowIndex="6" />
-                  <Label text="Return Marcentiging Autharization" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="8" />
-                  <Label text="Date :" GridPane.columnIndex="4" GridPane.rowIndex="10" />
-                  <TextField fx:id="tfProductId" GridPane.columnSpan="3" GridPane.rowIndex="1" />
-                  <TextField fx:id="tfProductName" GridPane.columnSpan="3" GridPane.rowIndex="3" />
-                  <TextField fx:id="tfProductQuantity" GridPane.columnSpan="3" GridPane.rowIndex="5" />
-                  <TextField fx:id="tfProductPursesPrice" GridPane.columnSpan="3" GridPane.rowIndex="7" />
-                  <TextField fx:id="tfProductSellPrice" GridPane.columnSpan="3" GridPane.rowIndex="9" />
-                  <TextArea fx:id="taProductDescription" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="11" GridPane.rowSpan="3" />
-                  <ComboBox fx:id="cbUnit" prefHeight="25.0" prefWidth="206.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="7" />
-                  <ComboBox fx:id="cbRMA" prefHeight="25.0" prefWidth="211.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="9" />
-                  <DatePicker fx:id="dpDate" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="11" />
-                  <Pane GridPane.columnIndex="6" GridPane.rowIndex="1">
+<!--                  <RadioButton fx:id="rbStatic" mnemonicParsing="false" text="Static" GridPane.columnIndex="1" />-->
+<!--                  <RadioButton fx:id="rbSeq" mnemonicParsing="false" text="Sequential" GridPane.columnIndex="2" />-->
+                  <Label text="Product Name :" GridPane.columnSpan="2" />
+                  <Label text="Quantity :" GridPane.rowIndex="3" />
+                  <Label text="Cost Price :" GridPane.columnIndex="5" GridPane.rowIndex="3" />
+                  <Label text="Sell Price" GridPane.rowIndex="6" />
+<!--                  <Label text="Description" GridPane.rowIndex="10" />-->
+<!--                  <Label text="Supplied By :" GridPane.columnIndex="4" />-->
+<!--                  <Label text="Brand :" GridPane.columnIndex="4" GridPane.rowIndex="2" />-->
+                  <Label text="Category :" GridPane.columnIndex="5" />
+<!--                  <Label text="Unit :" GridPane.columnIndex="4" GridPane.rowIndex="6" />-->
+<!--                  <Label text="Return Marcentiging Autharization" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.rowIndex="8" />-->
+<!--                  <Label text="Date :" GridPane.columnIndex="4" GridPane.rowIndex="10" />-->
+                  <TextField fx:id="productNameText" GridPane.columnSpan="3" GridPane.rowIndex="1" />
+                  <TextField fx:id="productQuantityText" prefHeight="46.0" prefWidth="324.0" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+                  <TextField fx:id="costPriceText" GridPane.columnIndex="5" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+                  <TextField fx:id="sellingPriceText" GridPane.columnSpan="3" GridPane.rowIndex="7" />
+<!--                  <TextArea fx:id="taProductDescription" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="3" GridPane.rowIndex="11" GridPane.rowSpan="3" />-->
+<!--                  <ComboBox fx:id="cbUnit" prefHeight="25.0" prefWidth="206.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="7" />-->
+<!--                  <ComboBox fx:id="cbRMA" prefHeight="25.0" prefWidth="211.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="9" />-->
+<!--                  <DatePicker fx:id="dpDate" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="11" />-->
+                  <Pane GridPane.columnIndex="11" GridPane.rowIndex="1">
                      <children>
-                        <Button fx:id="btnAddSupplier" layoutX="14.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" stylesheets="@../../../styles/AddButton.css" />
+<!--                        <Button fx:id="btnAddSupplier" layoutX="14.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" stylesheets="@../../../styles/AddButton.css" />-->
                      </children>
                   </Pane>
-                  <Pane GridPane.columnIndex="6" GridPane.rowIndex="3">
+                  <Pane GridPane.columnIndex="11" GridPane.rowIndex="3">
                      <children>
-                        <Button fx:id="btnAddBrand" layoutX="14.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="30.0" stylesheets="@../../../styles/AddButton.css" />
+<!--                        <Button fx:id="btnAddBrand" layoutX="14.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="30.0" stylesheets="@../../../styles/AddButton.css" />-->
                      </children>
                   </Pane>
-                  <Pane GridPane.columnIndex="6" GridPane.rowIndex="5">
+                  <Pane GridPane.columnIndex="11" GridPane.rowIndex="5">
                      <children>
                         <Button fx:id="btnAddCatagory" layoutX="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" stylesheets="@../../../styles/AddButton.css" />
                      </children>
                   </Pane>
-                  <Pane GridPane.columnIndex="6" GridPane.rowIndex="7">
+                  <Pane GridPane.columnIndex="11" GridPane.rowIndex="7">
                      <children>
-                        <Button fx:id="btnAddUnit" layoutX="14.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" stylesheets="@../../../styles/AddButton.css" />
+<!--                        <Button fx:id="btnAddUnit" layoutX="14.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" stylesheets="@../../../styles/AddButton.css" />-->
                      </children>
                   </Pane>
-                  <Pane GridPane.columnIndex="6" GridPane.rowIndex="9">
+                  <Pane GridPane.columnIndex="11" GridPane.rowIndex="9">
                      <children>
-                        <Button fx:id="btnAddRma" layoutX="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="30.0" stylesheets="@../../../styles/AddButton.css" />
+<!--                        <Button fx:id="btnAddRma" layoutX="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="30.0" stylesheets="@../../../styles/AddButton.css" />-->
                      </children>
                   </Pane>
-                  <Button fx:id="btnSave" mnemonicParsing="false" text="Save" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="15" />
-                  <TextField fx:id="tfValue" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                  <ComboBox fx:id="cbSupplyer" prefHeight="31.0" prefWidth="212.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <ComboBox fx:id="cmbBrand" prefHeight="31.0" prefWidth="201.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-                  <ComboBox fx:id="cmbCatagory" prefHeight="31.0" prefWidth="238.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-                  <Button fx:id="addButton" mnemonicParsing="false" text="Add Product" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="15" />
+                  <Button fx:id="btnSave" mnemonicParsing="false" text="Save" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="10" />
+<!--                  <TextField fx:id="tfValue" GridPane.columnIndex="4" GridPane.rowIndex="1" />-->
+<!--                  <ComboBox fx:id="cbSupplyer" prefHeight="31.0" prefWidth="212.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" />-->
+<!--                  <ComboBox fx:id="cmbBrand" prefHeight="31.0" prefWidth="201.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="3" />-->
+                  <ComboBox fx:id="catComboBox" prefHeight="31.0" prefWidth="238.0" GridPane.columnIndex="5" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+                  <Button fx:id="addButton" mnemonicParsing="false" text="Add Product" GridPane.columnIndex="4" GridPane.columnSpan="3" GridPane.halignment="RIGHT" GridPane.rowIndex="10" />
                </children>
             </GridPane>
          </children>
