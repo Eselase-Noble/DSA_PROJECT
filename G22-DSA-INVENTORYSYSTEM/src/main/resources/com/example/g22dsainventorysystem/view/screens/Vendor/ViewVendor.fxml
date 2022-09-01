@@ -4,17 +4,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="acCustomerMainContent" prefHeight="509.0" prefWidth="763.0" stylesheets="@../../../styles/MainStyle.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" fx:id="acCustomerMainContent" prefHeight="509.0" prefWidth="763.0" stylesheets="@../../../styles/MainStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.g22dsainventorysystem.controller.VendorController">
    <children>
-      <BorderPane layoutX="253.0" layoutY="132.0" prefHeight="509.0" prefWidth="763.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane layoutX="6.0" prefHeight="509.0" prefWidth="763.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
          <center>
-            <TableView fx:id="tblCustomer" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: none;" BorderPane.alignment="CENTER">
+            <TableView fx:id="viewCustomer" editable="true" onMouseClicked="#getSelected" onSort="#getSelected" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: none;" BorderPane.alignment="CENTER">
               <columns>
-                <TableColumn fx:id="tblClmName" prefWidth="104.0" text="Name" />
-                <TableColumn fx:id="tblClmContNo" prefWidth="124.0" text="Cont. No" />
-                  <TableColumn fx:id="tblClmAddres" prefWidth="137.0" text="Address" />
-                  <TableColumn fx:id="tblClmDate" prefWidth="123.0" text="Supplyer Since" />
-                  <TableColumn fx:id="tblClmAddBy" prefWidth="128.0" text="Added By" />
+                  <TableColumn fx:id="viewVendorID" prefWidth="104.0" text="Vendor_ID" />
+                <TableColumn fx:id="viewVendorName" prefWidth="104.0" text="Name" />
+                <TableColumn fx:id="viewVendorCon" prefWidth="124.0" text="Cont. No" />
+                  <TableColumn fx:id="viewVendorEmail" prefWidth="137.0" text="Email" />
+                  <TableColumn fx:id="viewVendorlocation" prefWidth="123.0" text="Location" />
+                  <TableColumn fx:id="viewVendorAddress" prefWidth="128.0" text="Address" />
                   <TableColumn fx:id="tblClmTotalBuy" prefWidth="146.0" text="Total Buy" />
               </columns>
                <columnResizePolicy>
@@ -23,19 +24,19 @@
             </TableView>
          </center>
          <top>
-            <HBox alignment="CENTER" prefHeight="65.0" prefWidth="763.0" spacing="10.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="409.0" spacing="10.0" BorderPane.alignment="CENTER_LEFT">
                <children>
-                  <TextField fx:id="tfSearch" prefHeight="25.0" prefWidth="603.0" promptText="Search Vendor" />
-                  <Button fx:id="btnRefresh" mnemonicParsing="false" prefHeight="32.0" prefWidth="32.0" />
+                  <TextField fx:id="tfSearch" onAction="#search_user" prefHeight="25.0" prefWidth="203.0" promptText="Search Vendor" />
+                  <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#update" onMouseClicked="#getSelected" prefHeight="32.0" prefWidth="132.0" text="Refresh" />
                </children>
             </HBox>
          </top>
          <bottom>
             <HBox alignment="CENTER_RIGHT" prefHeight="69.0" prefWidth="763.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnAdd" mnemonicParsing="false" text="Add New Customer" />
-                  <Button fx:id="btnUpdate" mnemonicParsing="false" text="Update" />
-                  <Button fx:id="btnDelete" mnemonicParsing="false" text="Delete" />
+                  <Button fx:id="btnAddNewVendor" mnemonicParsing="false" onAction="#update" text="Add New Customer" />
+                  <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#Edit" text="Update" />
+                  <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#Delete" text="Delete" />
                </children>
                <padding>
                   <Insets right="10.0" />
