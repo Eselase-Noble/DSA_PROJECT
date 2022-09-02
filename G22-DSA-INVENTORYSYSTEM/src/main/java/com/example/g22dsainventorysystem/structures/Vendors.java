@@ -1,20 +1,42 @@
 package com.example.g22dsainventorysystem.structures;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
 public class Vendors {
 
 
-  private int Vendor_ID;
-  private String Vendor_Name, Email,PhoneNumber,Location,Address;
-  public Vendors(int Vendor_ID, String Vendor_Name, String PhoneNumber, String Email, String Location, String Address){
-      this.Vendor_ID= Vendor_ID;
-      this.Vendor_Name =  Vendor_Name;
+  private Integer Vendor_ID  ;
+  private String Vendor_Name ;
+
+  private String  Email ;
+  private String PhoneNumber;
+  private String Location;
+
+  private String Address ;
+  public Vendors(){}
+  public Vendors(Integer Vendor_ID, String Vendor_Name, String PhoneNumber, String Email, String Location, String Address){
+      this.Vendor_ID = Vendor_ID;
+      this.Vendor_Name = Vendor_Name;
       this.PhoneNumber = PhoneNumber;
       this.Email = Email;
-      this.Location = Location;
+      this.Location  = Location;
       this.Address = Address;
+//      this.Vendor_ID = new   SimpleIntegerProperty(Vendor_ID);
+//      this.Vendor_Name = new SimpleStringProperty(Vendor_Name);
+//      this.PhoneNumber = new SimpleStringProperty(PhoneNumber);
+//      this.Email = new SimpleStringProperty(Email);
+//      this.Location = new SimpleStringProperty(Location);
+//      this.Address = new SimpleStringProperty(Address);
   }
 
-    public int getVendor_ID() {
+
+
+    public Integer getVendor_ID() {
         return Vendor_ID;
     }
 
@@ -27,7 +49,7 @@ public class Vendors {
     }
 
     public void setVendor_Name(String vendor_Name) {
-        Vendor_Name = vendor_Name;
+        Vendor_Name= vendor_Name;
     }
 
     public String getEmail() {
@@ -39,7 +61,7 @@ public class Vendors {
     }
 
     public String getPhoneNumber() {
-        return PhoneNumber;
+        return this.PhoneNumber;
     }
 
     public void setAddress(String address) {
@@ -56,6 +78,27 @@ public class Vendors {
 
     public String getLocation() {
         return Location;
+    }
+
+    public Map<String, StringProperty> fields;
+
+    public Vendors(Map<String, String> record)
+    {
+        this.fields = new HashMap<>();
+        for (String key : record.keySet())
+        {
+            this.fields.put(key, new SimpleStringProperty());
+        }
+        for (Map.Entry<String, String> entry : ((Set<Map.Entry<String, String>>) record.entrySet()))
+        {
+
+            this.fields.get(entry.getKey()).set(entry.getValue());
+        }
+    }
+
+    public final StringProperty fieldProperty(String key)
+    {
+        return this.fields.get(key);
     }
 
 }

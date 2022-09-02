@@ -1,5 +1,6 @@
 package com.example.g22dsainventorysystem.controller;
 
+import com.example.g22dsainventorysystem.structures.ObservableHashMap;
 import com.example.g22dsainventorysystem.structures.TestConnection;
 import com.example.g22dsainventorysystem.structures.Vendors;
 import javafx.collections.ObservableList;
@@ -16,6 +17,7 @@ import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 public class VendorController {
 
@@ -46,6 +48,8 @@ private  TableColumn<Vendors, Integer> viewVendorID;
 
 ObservableList<Vendors> listM;
 ObservableList<Vendors> dataList;
+Vendors vendors = new Vendors();
+ObservableHashMap<String,Vendors> hashMap;
 
 
 
@@ -57,6 +61,7 @@ Connection connection = TestConnection.ConnectionUtil.connectdb();
 
 ObservableList observableList;
 ObservableMap observableMap;
+HashMap hashMaps;
 
  public void OnActionButton(javafx.event.ActionEvent activeEvent){
 
@@ -94,7 +99,9 @@ ObservableMap observableMap;
 
 
      TestConnection testConnection = new TestConnection();
-     listM = testConnection.getDatausers();
+    listM = testConnection.getDatausers();
+    // hashMap = testConnection.getVendor();
+    // viewCustomer.setItems((ObservableList<Vendors>) hashMap);
      viewCustomer.setItems(listM);
 
 
@@ -168,11 +175,11 @@ ObservableMap observableMap;
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
 
-                if (person.getVendor_Name().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+                if (String.valueOf(person.getVendor_Name()).toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
                     return true; // Filter matches username
-                } else if (person.getPhoneNumber().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                } else if (String.valueOf( person.getPhoneNumber()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true; // Filter matches password
-                }else if (person.getEmail().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                }else if (String.valueOf( person.getEmail()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true; // Filter matches password
                 }
                 else if (String.valueOf(person.getEmail()).indexOf(lowerCaseFilter)!=-1)
