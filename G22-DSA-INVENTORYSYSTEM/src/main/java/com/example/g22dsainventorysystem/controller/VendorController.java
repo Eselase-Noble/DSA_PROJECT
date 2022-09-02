@@ -143,9 +143,6 @@ ObservableMap observableMap;
 
     }
 
-
-
-
     @FXML
     void search_user() {
 
