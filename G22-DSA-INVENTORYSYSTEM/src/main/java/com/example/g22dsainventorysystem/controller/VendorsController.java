@@ -9,10 +9,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.sql.*;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -54,88 +55,8 @@ public class VendorsController {
     ObservableList<Map<String, Vendors>> list;
 
 
-    public void updates(){
 
 
-
-        //viewVendorID.setCellValueFactory(new );
-
-        TestConnection testConnection = new TestConnection();
-        list = testConnection.getMyVendors();
-        viewCustomer.getColumns();
-       // viewCustomer.setItems(list);
-
-//        listM = testConnection.getDatausers();
-//        hashMap = testConnection.getVendor();
-//        // viewCustomer.setItems((ObservableList<Vendors>) hashMap);
-//        viewCustomer.setItems(listM);
-
-
-    }
-
-    public List<Map<String, Vendors>> getVendors() {
-        Vendors vendors = new Vendors();
-        Connection connection = TestConnection.ConnectionUtil.connectdb();
-        Map<String, Vendors> map = new HashMap<>();
-        List<Map<String, Vendors>> observableList = new ArrayList<>();
-
-//
-//        map.addListener((MapChangeListener.Change<? extends String, ? extends Vendors> change) -> {
-//            boolean removed = change.wasRemoved();
-//            if (removed != change.wasAdded()) {
-//                if (removed) {
-//                    // no put for existing key
-//                    // remove pair completely
-//                    entries.remove(new MapEntry<>(change.getKey(), (Vendors) null));
-//                } else {
-//                    // add new entry
-//                    entries.add(new MapEntry<>(change.getKey(), change.getValueAdded()));
-//                }
-//            } else {
-//                // replace existing entry
-//                MapEntry<String, Vendors> entry = new MapEntry<>(change.getKey(), change.getValueAdded());
-//
-//                int index = entries.indexOf(entry);
-//                entries.set(index, entry);
-//            }
-//        });
-
-        try {
-            PreparedStatement ps = connection.prepareStatement("select * from vendor");
-            ResultSet resultSet = ps.executeQuery();
-            while (resultSet.next()) {
-                map.put(String.valueOf(vendors.getVendor_Name()), new Vendors(resultSet.getInt("Vendor_ID"),
-                        resultSet.getString("Vendor_Name"), resultSet.getString("Email"),
-                        resultSet.getString("PhoneNumber"), resultSet.getString("Location"),
-                        resultSet.getString("Address")));
-                observableList.add(map);
-            }
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-        return observableList;
-
-        //viewCustomer.setItems((ObservableList<MapEntry<String, Vendors>>) map);
-
-        //viewVendorAddress.setCellValueFactory(TableColumn.CellDataFeatures<String,Vendors>cellData)->c);
-
-
-    }
-
-//    public void refresh(){
-//        Vendors vendors = new Vendors();
-//        viewVendorID.setCellValueFactory(cd -> Bindings.createStringBinding((Callable<String>) vendors.getVendor_ID()).length());
-//        viewVendorName.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Map<String, Vendors>, String>, ObservableValue<String>>) vendors.getVendor_Name());
-//        viewVendorCon.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Map<String, Vendors>, String>, ObservableValue<String>>) vendors.getPhoneNumber());
-//        viewVendorEmail.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Map<String, Vendors>, String>, ObservableValue<String>>) vendors.getEmail());
-//        viewVendorlocation.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Map<String, Vendors>, String>, ObservableValue<String>>) vendors.getLocation());
-//        viewVendorAddress.setCellValueFactory((Callback<TableColumn.CellDataFeatures<Map<String, Vendors>, String>, ObservableValue<String>>) vendors.getAddress());
-//
-//        viewCustomer.getColumns().setAll(viewVendorID,viewVendorName,viewVendorCon,viewVendorEmail,viewVendorlocation,viewVendorAddress);
-//        viewCustomer.setItems(FXCollections.observableArrayList(getVendors()));
-//
-//    }
 
 
     public ObservableList<Object> getUsers(){

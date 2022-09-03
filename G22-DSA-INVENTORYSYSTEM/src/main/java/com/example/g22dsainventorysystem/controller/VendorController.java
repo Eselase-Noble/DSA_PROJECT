@@ -18,44 +18,51 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class VendorController {
 
 
 
-@FXML
- TextArea vendorContact,vendorAddress, vendorEmail, vendorLocation;
-@FXML TextField vendorName, tfSearch,vendorID;
+    @FXML
+    TextArea vendorContact,vendorAddress, vendorEmail, vendorLocation;
+    @FXML
+    TextField vendorName, tfSearch,vendorID;
 
-@FXML
-private TableView<Vendors> viewCustomer;
+    TableColumn<Map<String, Vendors>, String> column1 = new TableColumn<>("Key");
 
-@FXML
-private Button addVendor, btnRefresh;
-@FXML
-private TableColumn<Vendors, String> viewVendorName;
-@FXML
-private  TableColumn<Vendors, String> viewVendorCon;
+    @FXML
+    private TableView<Object> viewCustomer ;
 
-@FXML
-private  TableColumn<Vendors, String> viewVendorlocation;
+    @FXML
+    private Button addVendor, btnRefresh;
+    @FXML
+    private TableColumn< Vendors, String> viewVendorName = new TableColumn<>("Vendor_Name");
+    @FXML
+    private  TableColumn<Vendors, String> viewVendorCon = new TableColumn<>("PhoneNumber") ;
 
-@FXML
-private  TableColumn<Vendors, String> viewVendorAddress;
+    @FXML
+    private  TableColumn<Vendors, String> viewVendorlocation = new TableColumn<>("Location");
 
-@FXML
-private  TableColumn<Vendors, Integer> viewVendorID;
+    @FXML
+    private  TableColumn<Vendors, String> viewVendorAddress = new TableColumn<>("Address") ;
 
-ObservableList<Vendors> listM;
-ObservableList<Vendors> dataList;
+    @FXML
+    private TableColumn<Vendors, Integer> viewVendorID = new TableColumn<Vendors, Integer>("Vendor_ID") ;
+
+    @FXML
+    private  TableColumn<Vendors, String> viewVendorEmail = new TableColumn<>("Email");
+
+
+ObservableList<Object> listM;
+ObservableList<Object> dataList;
 Vendors vendors = new Vendors();
 ObservableHashMap<String,Vendors> hashMap;
 
 
 
 
-@FXML
-private  TableColumn<Vendors, String> viewVendorEmail;
+
 
 Connection connection = TestConnection.ConnectionUtil.connectdb();
 
@@ -79,7 +86,7 @@ HashMap hashMaps;
 
 
          stack.executeUpdate();
-         update();
+         refreshed();
          search_user();
 
      } catch (SQLException e) {
@@ -88,24 +95,40 @@ HashMap hashMaps;
 
  }
 
- public void update(){
 
-     viewVendorID.setCellValueFactory(new PropertyValueFactory<Vendors, Integer>("Vendor_ID"));
-     viewVendorName.setCellValueFactory(new PropertyValueFactory<Vendors,String>("Vendor_Name"));
-     viewVendorCon.setCellValueFactory(new PropertyValueFactory<Vendors, String>("PhoneNumber"));
-     viewVendorEmail.setCellValueFactory(new PropertyValueFactory<Vendors, String>("Email"));
-     viewVendorlocation.setCellValueFactory(new PropertyValueFactory<Vendors, String>("Location"));
-     viewVendorAddress.setCellValueFactory(new PropertyValueFactory<Vendors, String>("Address"));
+    public void refreshed(){
+        viewVendorID.setCellValueFactory(new PropertyValueFactory<Vendors, Integer>("Vendor_ID"));
+        viewVendorName.setCellValueFactory(new PropertyValueFactory<Vendors,String>("Vendor_Name"));
+        viewVendorCon.setCellValueFactory(new PropertyValueFactory<Vendors, String>("PhoneNumber"));
+        viewVendorEmail.setCellValueFactory(new PropertyValueFactory<Vendors, String>("Email"));
+        viewVendorlocation.setCellValueFactory(new PropertyValueFactory<Vendors, String>("Location"));
+        viewVendorAddress.setCellValueFactory(new PropertyValueFactory<Vendors, String>("Address"));
+//        Alert alert = new Alert(Alert.AlertType.ERROR, "Error " + getUsers(), ButtonType.OK);
+//        alert.show();
+        TestConnection testConnection = new TestConnection();
+
+        viewCustomer.setItems(testConnection.getUsers());
+    }
 
 
-     TestConnection testConnection = new TestConnection();
-    listM = testConnection.getDatausers();
+// public void update(){
+//
+//     viewVendorID.setCellValueFactory(new PropertyValueFactory<Vendors, Integer>("Vendor_ID"));
+//     viewVendorName.setCellValueFactory(new PropertyValueFactory<Vendors,String>("Vendor_Name"));
+//     viewVendorCon.setCellValueFactory(new PropertyValueFactory<Vendors, String>("PhoneNumber"));
+//     viewVendorEmail.setCellValueFactory(new PropertyValueFactory<Vendors, String>("Email"));
+//     viewVendorlocation.setCellValueFactory(new PropertyValueFactory<Vendors, String>("Location"));
+//     viewVendorAddress.setCellValueFactory(new PropertyValueFactory<Vendors, String>("Address"));
+//
+//
+//     TestConnection testConnection = new TestConnection();
+//    listM = testConnection.getDatausers();
     // hashMap = testConnection.getVendor();
     // viewCustomer.setItems((ObservableList<Vendors>) hashMap);
-     viewCustomer.setItems(listM);
+   //  viewCustomer.setItems(listM);
 
 
- }
+ //}
 
     public void Delete(ActionEvent event){
        Connection conn = TestConnection.ConnectionUtil.connectdb();
@@ -115,7 +138,7 @@ HashMap hashMaps;
             pst.setString(1, vendorID.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Delete");
-            update();
+            refreshed();
             search_user();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -131,7 +154,7 @@ HashMap hashMaps;
         viewVendorAddress.setCellValueFactory(new PropertyValueFactory<Vendors,String>("Address"));
 
         TestConnection testConnection = new TestConnection();
-        listM = testConnection.getDatausers();
+        listM = testConnection.getUsers();
         viewCustomer.setItems(listM);
     }
 
@@ -150,9 +173,6 @@ HashMap hashMaps;
 
     }
 
-
-
-
     @FXML
     void search_user() {
 
@@ -165,31 +185,32 @@ HashMap hashMaps;
         viewVendorAddress.setCellValueFactory(new PropertyValueFactory<Vendors,String>("Address"));
 
         TestConnection testConnection = new TestConnection();
-        dataList = testConnection.getDatausers();
+        dataList = testConnection.getUsers();
         viewCustomer.setItems(dataList);
-        FilteredList<Vendors> filteredData = new FilteredList<>(dataList, b -> true);
+        FilteredList<Object> filteredData =  new FilteredList<Object>(dataList, b -> true);
         tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredData.setPredicate(person -> {
+            filteredData.setPredicate(vendors1 -> {
                 if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
                 String lowerCaseFilter = newValue.toLowerCase();
+               Vendors vendor1 = new Vendors();
 
-                if (String.valueOf(person.getVendor_Name()).toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+                if (String.valueOf(vendors1.equals(vendor1.getVendor_Name())).toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
                     return true; // Filter matches username
-                } else if (String.valueOf( person.getPhoneNumber()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                } else if (String.valueOf( vendors.equals(vendor1.getVendor_Name())).toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true; // Filter matches password
-                }else if (String.valueOf( person.getEmail()).toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                }else if (String.valueOf( vendors1.equals(vendor1.getEmail())).toLowerCase().indexOf(lowerCaseFilter) != -1) {
                     return true; // Filter matches password
                 }
-                else if (String.valueOf(person.getEmail()).indexOf(lowerCaseFilter)!=-1)
+                else if (String.valueOf(vendors1.equals(vendor1.getVendor_Name())).indexOf(lowerCaseFilter)!=-1)
                     return true;// Filter matches email
 
                 else
                     return false; // Does not match.
             });
         });
-        SortedList<Vendors> sortedData = new SortedList<>(filteredData);
+        SortedList<Object> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(viewCustomer.comparatorProperty());
         viewCustomer.setItems(sortedData);
     }
@@ -217,7 +238,7 @@ HashMap hashMaps;
             PreparedStatement pst= conn.prepareStatement(sql);
             pst.execute();
             JOptionPane.showMessageDialog(null, "Update");
-            update();
+            refreshed();
             search_user();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -256,7 +277,7 @@ HashMap hashMaps;
             PreparedStatement pst= conn.prepareStatement(sql);
             pst.execute();
             JOptionPane.showMessageDialog(null, "Update");
-            update();
+            refreshed();
             search_user();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -273,7 +294,7 @@ HashMap hashMaps;
             pst.setString(1, vendorID.getText());
             pst.execute();
             JOptionPane.showMessageDialog(null, "Delete");
-            update();
+            refreshed();
             search_user();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

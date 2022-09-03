@@ -13,7 +13,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader();
         fxmlLoader.setLocation(HelloApplication.class.getResource("view/screens/Vendor/ViewVendor.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1120, 700);
-        stage.setTitle("GROUP 22");
+        stage.setTitle("GROUP 27");
         stage.setScene(scene);
         stage.show();
     }
