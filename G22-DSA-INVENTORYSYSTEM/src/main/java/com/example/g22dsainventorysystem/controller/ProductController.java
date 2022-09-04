@@ -1,15 +1,12 @@
 package com.example.g22dsainventorysystem.controller;
 
-import com.example.g22dsainventorysystem.structures.Product;
-import com.example.g22dsainventorysystem.structures.ProductCategoryManagement;
-import com.example.g22dsainventorysystem.structures.TestConnection;
+import com.example.g22dsainventorysystem.structures.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.security.SecureRandom;
@@ -43,11 +40,14 @@ private  TableColumn<Product, Double> costPrice;
 @FXML
 private TableColumn<Product, String> categoryName;
 
+@FXML
+        private TextField tfSearch;
 
 
 
     Connection connection = TestConnection.ConnectionUtil.connectdb();
-
+    ObservableStack<Product> listMs;
+    ObservableStack<Product> dataList;
 @FXML
 private ComboBox catComboBox,catComboBox2;
 
@@ -169,6 +169,59 @@ private ComboBox catComboBox,catComboBox2;
 
 
             viewProducts.setItems(pdf.getCategories());
+        }
+    }
+
+
+    @FXML
+    void search_product() {
+
+        //col_id.setCellValueFactory(new PropertyValueFactory<Vendors,Integer>("id"));
+        //viewVendorID.setCellValueFactory(new PropertyValueFactory<Vendors, Integer>("Vender_ID"));
+        productName.setCellValueFactory(new PropertyValueFactory<Product,String>("Product_Name"));
+        categoryName.setCellValueFactory(new PropertyValueFactory<Product,String>("Category_Name"));
+
+
+        ProductCategoryManagement testConnection = new ProductCategoryManagement();
+        dataList = testConnection.getCategories();
+        viewProducts.setItems((dataList));
+        FilteredList<Product> filteredData = new FilteredList<>(dataList, b -> true);
+        tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(product -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (product.getProduct_Name().toLowerCase().indexOf(lowerCaseFilter) != -1 ) {
+                    return true; // Filter matches username
+                } else if (product.getCategory_Name().toLowerCase().indexOf(lowerCaseFilter) != -1) {
+                    return true; // Filter matches password
+                }
+
+                else
+                    return false; // Does not match.
+            });
+        });
+        SortedList<Product> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(viewProducts.comparatorProperty());
+        viewProducts.setItems(sortedData);
+    }
+
+    public void delete() {
+        ProductCategoryManagement pcm = new ProductCategoryManagement();
+
+        productID.setCellValueFactory(new PropertyValueFactory<Product, Integer>("Product_ID"));
+        productName.setCellValueFactory(new PropertyValueFactory<Product, String>("Product_Name"));
+        sellingPrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("Selling_Price"));
+        quantity.setCellValueFactory(new PropertyValueFactory<Product, Integer>("Quantity"));
+        productCode.setCellValueFactory(new PropertyValueFactory<Product, String>("Product_Code"));
+        costPrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("Cost_Price"));
+        categoryName.setCellValueFactory(new PropertyValueFactory<Product, String>("Category_Name"));
+//        Alert alert = new Alert(Alert.AlertType.ERROR, "Error " + getUsers(), ButtonType.OK);
+
+        if (catComboBox2.getValue().toString().equals("BEVERAGES")) {
+           viewProducts.setItems(pcm.delete()); 
         }
     }
 

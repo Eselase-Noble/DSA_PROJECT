@@ -11,12 +11,12 @@ import java.util.Random;
 
 public class ProductCategoryManagement {
 
-
+    ObservableStack<Product> stack = new ObservableStack<>();
     public  ProductCategoryManagement(){}
 
     public ObservableStack<Product> getCategories() {
         Connection connection = TestConnection.ConnectionUtil.connectdb();
-        ObservableStack<Product> stack = new ObservableStack<>();
+
 
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("SELECT Product.Product_ID,Product.Product_Name,Product.Selling_Price,Product.Quantity,Product.Product_Code,Product.Cost_Price,Category.Category_Name FROM `Product` INNER JOIN `Category` ON Product.Category_ID = Category.Category_ID ;");
@@ -33,6 +33,7 @@ public class ProductCategoryManagement {
 
 
     }
+
 
     public ObservableStack<Product> getBeverageCategorY() {
         Connection connection = TestConnection.ConnectionUtil.connectdb();
@@ -53,6 +54,31 @@ public class ProductCategoryManagement {
 
 
     }
+
+    public ObservableStack<Product> delete(){
+        Connection connection = TestConnection.ConnectionUtil.connectdb();
+        ObservableStack<Product> stack = new ObservableStack<>();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT Product.Product_ID,Product.Product_Name,Product.Selling_Price,Product.Quantity,Product.Product_Code,Product.Cost_Price,Category.Category_Name FROM `Product` INNER JOIN `Category` ON Product.Category_ID = Category.Category_ID WHERE Category_Name = 'BEVERAGES';");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                stack.push(new Product(resultSet.getInt("Product_ID"), resultSet.getString("Product_Name"), resultSet.getDouble("Selling_Price"),
+                        resultSet.getInt("Quantity"),resultSet.getString("Product_Code"),
+                        resultSet.getDouble("Cost_Price"), resultSet.getString("Category_Name")));
+
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(stack);
+        stack.pop();
+        System.out.println(stack);
+        return stack;
+
+
+    }
+
 
     public ObservableStack<Product> getBakeyCategory() {
         Connection connection = TestConnection.ConnectionUtil.connectdb();

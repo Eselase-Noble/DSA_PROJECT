@@ -146,17 +146,6 @@ HashMap hashMaps;
 
     }
 
-    public void UpdateTable(javafx.event.ActionEvent event){
-        viewVendorName.setCellValueFactory(new PropertyValueFactory<Vendors,String>("Vendor_Name"));
-        viewVendorCon.setCellValueFactory(new PropertyValueFactory<Vendors,String>("PhoneNumber"));
-        viewVendorCon.setCellValueFactory(new PropertyValueFactory<Vendors,String>("Email"));
-        viewVendorlocation.setCellValueFactory(new PropertyValueFactory<Vendors,String>("Location"));
-        viewVendorAddress.setCellValueFactory(new PropertyValueFactory<Vendors,String>("Address"));
-
-        TestConnection testConnection = new TestConnection();
-        listM = testConnection.getUsers();
-        viewCustomer.setItems(listM);
-    }
 
     @FXML
     void getSelecteds (MouseEvent event){
