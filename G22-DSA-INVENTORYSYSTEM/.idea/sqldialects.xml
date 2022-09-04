@@ -2,6 +2,7 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/g22dsainventorysystem/controller/CategoryController.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/g22dsainventorysystem/controller/ProductController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/g22dsainventorysystem/controller/VendorController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/g22dsainventorysystem/structures/ProductCategoryManagement.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/g22dsainventorysystem/structures/TestConnection.java" dialect="GenericSQL" />

@@ -7,8 +7,25 @@ public class Product {
     private Double Selling_Price;
     private Integer Quantity;
     private Integer Category_ID;
+
+    private Double Cost_Price;
     private String Product_Code;
     public String Category_Name;
+
+    public Product(){
+
+    }
+
+    public Product(int Product_ID, String Product_Name, Double Selling_Price, int Quantity, String Product_Code, Double Cost_Price ,String Category_Name){
+    this.Product_ID = Product_ID;
+    this.Product_Name = Product_Name;
+    this.Selling_Price = Selling_Price;
+    this.Quantity = Quantity;
+    this.Product_Code = Product_Code;
+    this.Cost_Price = Cost_Price;
+    this.Category_Name = Category_Name;
+
+    }
 
     public Integer getProduct_ID() {
         return Product_ID;
@@ -36,6 +53,14 @@ public class Product {
 
     public Integer getQuantity() {
         return Quantity;
+    }
+
+    public Double getCost_Price() {
+        return Cost_Price;
+    }
+
+    public void setCost_Price(Double cost_Price) {
+        Cost_Price = cost_Price;
     }
 
     public void setQuantity(Integer quantity) {

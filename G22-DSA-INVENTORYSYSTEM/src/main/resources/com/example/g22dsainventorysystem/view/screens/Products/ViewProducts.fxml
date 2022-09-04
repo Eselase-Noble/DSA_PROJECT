@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="Products" prefHeight="509.0" prefWidth="763.0" stylesheets="@../../../styles/MainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane id="AnchorPane" fx:id="Products" prefHeight="509.0" prefWidth="763.0" stylesheets="@../../../styles/MainStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.g22dsainventorysystem.controller.ProductController">
     <children>
-        <BorderPane prefHeight="509.0" prefWidth="763.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <BorderPane layoutX="-14.0" layoutY="20.0" prefHeight="509.0" prefWidth="763.0" AnchorPane.bottomAnchor="-20.0" AnchorPane.leftAnchor="-14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="20.0">
             <center>
                 <TableView fx:id="viewProducts" editable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
                     <columns>
-                        <TableColumn fx:id="pdt_name" prefWidth="104.0" text="Name" />
-                        <TableColumn fx:id="pdt_category" prefWidth="104.0" text="Category" />
-                        <TableColumn fx:id="pdt_description" prefWidth="124.0" text="Description" />
-                        <TableColumn fx:id="pdt_quantity" prefWidth="137.0" text="Quantity Available" />
-                        <TableColumn fx:id="pdt_sales_price" prefWidth="128.0" text="Unit Sales Price" />
+                        <TableColumn fx:id="productID" prefWidth="137.0" text="Product_ID" />
+                        <TableColumn fx:id="productName" prefWidth="104.0" text="Product_Name" />
+                        <TableColumn fx:id="sellingPrice" prefWidth="128.0" text="Selling_Price" />
+                        <TableColumn fx:id="quantity" prefWidth="137.0" text="Quantity" />
+                        <TableColumn fx:id="productCode" prefWidth="137.0" text="Product_Code" />
+                        <TableColumn fx:id="costPrice" prefWidth="124.0" text="Cost_Price" />
+                        <TableColumn fx:id="categoryName" prefWidth="104.0" text="Category_Name" />
+
+
+
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -30,7 +30,8 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="409.0" spacing="10.0" BorderPane.alignment="CENTER_LEFT">
                     <children>
                         <TextField fx:id="tfSearch" prefHeight="25.0" prefWidth="203.0" promptText="Search Products" />
-                        <Button fx:id="btnRefresh" mnemonicParsing="false" prefHeight="32.0" prefWidth="132.0" style="-fx-background-color: navy;" text="Refresh" textFill="WHITE" />
+                  <ComboBox fx:id="catComboBox2" onAction="#combox" onDragDropped="#combox" onMouseClicked="#combox" prefWidth="150.0" promptText="Category" />
+                        <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#refreshed" prefHeight="32.0" prefWidth="132.0" style="-fx-background-color: navy;" text="Refresh" textFill="WHITE" />
                     </children>
                 </HBox>
             </top>

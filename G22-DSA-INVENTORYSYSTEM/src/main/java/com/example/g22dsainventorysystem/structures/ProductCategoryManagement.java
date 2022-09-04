@@ -4,21 +4,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Random;
 
 public class ProductCategoryManagement {
 
 
     public  ProductCategoryManagement(){}
 
-    public ObservableStack<Category> getCategories() {
+    public ObservableStack<Product> getCategories() {
         Connection connection = TestConnection.ConnectionUtil.connectdb();
-        ObservableStack<Category> stack = new ObservableStack<>();
+        ObservableStack<Product> stack = new ObservableStack<>();
 
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("SELECT Product*, Category.Category_Name FROM Category INNER JOIN Category ON Product.Category");
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT Product.Product_ID,Product.Product_Name,Product.Selling_Price,Product.Quantity,Product.Product_Code,Product.Cost_Price,Category.Category_Name FROM `Product` INNER JOIN `Category` ON Product.Category_ID = Category.Category_ID;");
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                stack.push(new Category(resultSet.getInt("Category_ID"), resultSet.getString("Category_Name"), resultSet.getString("Description")));
+                stack.push(new Product(resultSet.getInt("Product_ID"), resultSet.getString("Product_Name"), resultSet.getDouble("Selling_Price"),
+                        resultSet.getInt("Quantity"),resultSet.getString("Product_Code"), resultSet.getDouble("Cost_Price"), resultSet.getString("Category_Name")));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -27,5 +29,19 @@ public class ProductCategoryManagement {
         return stack;
 
 
+    }
+
+    public String randomProductcode(int length)
+    {
+        int chars[] = new int[]{1,2,3,4,5,6,7,8,9,0};
+        var productPassword = new char[length];
+        var random = new Random();
+
+        for (int index = 0; index < productPassword.length; index++)
+        {
+            productPassword[index] = (char) chars[random.nextInt(chars.length)];
+        }
+
+        return new String(productPassword);
     }
 }
