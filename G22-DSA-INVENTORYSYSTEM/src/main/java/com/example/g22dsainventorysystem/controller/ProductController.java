@@ -129,9 +129,9 @@ private ComboBox catComboBox,catComboBox2;
  }
 
 
-    public void refreshed(){
+    public void refreshed() {
         productID.setCellValueFactory(new PropertyValueFactory<Product, Integer>("Product_ID"));
-        productName.setCellValueFactory(new PropertyValueFactory<Product,String>("Product_Name"));
+        productName.setCellValueFactory(new PropertyValueFactory<Product, String>("Product_Name"));
         sellingPrice.setCellValueFactory(new PropertyValueFactory<Product, Double>("Selling_Price"));
         quantity.setCellValueFactory(new PropertyValueFactory<Product, Integer>("Quantity"));
         productCode.setCellValueFactory(new PropertyValueFactory<Product, String>("Product_Code"));
@@ -141,7 +141,35 @@ private ComboBox catComboBox,catComboBox2;
 //        alert.show();
         ProductCategoryManagement pdf = new ProductCategoryManagement();
 
-        viewProducts.setItems(pdf.getCategories());
+        if (catComboBox2.getValue().toString().equals("BEVERAGES")) {
+
+            viewProducts.setItems(pdf.getBeverageCategorY());
+
+        } else if (catComboBox2.getValue().equals("BREAD/BAKERY")) {
+            viewProducts.setItems(pdf.getBakeyCategory());
+        } else if (catComboBox2.getValue().equals("CANNED/JARRED GOODS")) {
+            viewProducts.setItems(pdf.getCannedCategory());
+        } else if (catComboBox2.getValue().equals("DAIRY")) {
+            viewProducts.setItems(pdf.getDairyCategory());
+        } else if (catComboBox2.getValue().equals("DRY/BAKING GOODS")) {
+            viewProducts.setItems(pdf.getDryCategory());
+        } else if (catComboBox2.getValue().equals("FROZEN FOODS")) {
+            viewProducts.setItems(pdf.getFrozenCategory());
+        } else if (catComboBox2.getValue().equals("MEAT")) {
+            viewProducts.setItems(pdf.getMeatCategory());
+        } else if (catComboBox2.getValue().equals("PRODUCE")) {
+            viewProducts.setItems(pdf.getProduceCategory());
+        } else if (catComboBox2.getValue().equals("CLEANERS")) {
+            viewProducts.setItems(pdf.getCleanersCategory());
+        } else if (catComboBox2.getValue().equals("PAPER GOODS")) {
+            viewProducts.setItems(pdf.getPaperFoodCategory());
+        } else if (catComboBox2.getValue().equals("PERSONAL CARE")) {
+            viewProducts.setItems(pdf.getPersonalCategories());
+        } else if (catComboBox2.getValue().toString().equals("")){
+
+
+            viewProducts.setItems(pdf.getCategories());
+        }
     }
 
 
