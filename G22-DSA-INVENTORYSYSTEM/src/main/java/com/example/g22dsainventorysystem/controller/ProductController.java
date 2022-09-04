@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import javax.swing.*;
 import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +21,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ProductController {
 
 @FXML
-private TextField productNameText,productQuantityText,sellingPriceText,costPriceText;
+private TextField productNameText,productQuantityText,sellingPriceText,costPriceText, productIDTextField;
 
 @FXML
 private TableView<Product> viewProducts ;
@@ -176,8 +177,6 @@ private ComboBox catComboBox,catComboBox2;
     @FXML
     void search_product() {
 
-        //col_id.setCellValueFactory(new PropertyValueFactory<Vendors,Integer>("id"));
-        //viewVendorID.setCellValueFactory(new PropertyValueFactory<Vendors, Integer>("Vender_ID"));
         productName.setCellValueFactory(new PropertyValueFactory<Product,String>("Product_Name"));
         categoryName.setCellValueFactory(new PropertyValueFactory<Product,String>("Category_Name"));
 
@@ -222,6 +221,47 @@ private ComboBox catComboBox,catComboBox2;
 
         if (catComboBox2.getValue().toString().equals("BEVERAGES")) {
            viewProducts.setItems(pcm.deleteBe());
+        } else if (catComboBox2.getValue().toString().equals("BREAD/BAKERY")) {
+            viewProducts.setItems(pcm.deleteBakeyCategory());
+        } else if (catComboBox2.getValue().toString().equals("CANNED/JARRED GOODS")) {
+            viewProducts.setItems(pcm.deleteCannedCategory());
+        } else if (catComboBox2.getValue().toString().equals("DAIRY")) {
+            viewProducts.setItems(pcm.getDairyCategory());
+        } else if (catComboBox2.getValue().toString().equals("DRY/BAKING GOODS")) {
+            viewProducts.setItems(pcm.deleteDryCategory());
+        } else if (catComboBox2.getValue().toString().equals("FROZEN FOODS")) {
+            viewProducts.setItems(pcm.deleteFrozenCategory());
+        } else if (catComboBox2.getValue().toString().equals("MEAT")) {
+            viewProducts.setItems(pcm.deleteMeatCategory());
+        } else  {
+            Delete();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+    //Implementing the Delete Method
+    public void Delete() {
+
+        Connection conn = TestConnection.ConnectionUtil.connectdb();
+        String sql = "delete from Product where Product_ID = ?";
+        try {
+            PreparedStatement pst = conn.prepareStatement(sql);
+            pst.setString(1, productIDTextField.getText());
+            pst.execute();
+            JOptionPane.showMessageDialog(null, "Delete");
+            refreshed();
+            search_product();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
     }
 

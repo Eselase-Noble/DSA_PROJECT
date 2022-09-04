@@ -32,13 +32,14 @@
                         <TextField fx:id="tfSearch" onAction="#search_product" prefHeight="25.0" prefWidth="203.0" promptText="Search Products" />
                   <ComboBox fx:id="catComboBox2" onAction="#combox" onDragDropped="#combox" onMouseClicked="#combox" prefWidth="150.0" promptText="Category" />
                         <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#refreshed" prefHeight="32.0" prefWidth="132.0" style="-fx-background-color: navy;" text="Refresh" textFill="WHITE" />
-                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#delete" onMouseClicked="#delete" prefHeight="32.0" prefWidth="132.0" style="-fx-background-color: navy;" text="Delete" textFill="WHITE" />
+                  <TextField fx:id="productIDTextField" />
                     </children>
                 </HBox>
             </top>
             <bottom>
                 <HBox alignment="CENTER_RIGHT" prefHeight="69.0" prefWidth="763.0" spacing="10.0" BorderPane.alignment="CENTER">
                     <children>
+                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#delete" onMouseClicked="#delete" prefHeight="32.0" prefWidth="132.0" style="-fx-background-color: navy;" text="Delete" textFill="WHITE" />
                         <Button fx:id="btnAddProduct" mnemonicParsing="false" style="-fx-background-color: navy;" text="Add New Product" textFill="WHITE" />
                         <Button fx:id="btnUpdate" mnemonicParsing="false" style="-fx-background-color: navy;" text="Update" textFill="WHITE" />
                     </children>

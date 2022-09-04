@@ -333,7 +333,7 @@ public class ProductCategoryManagement {
 
 
     }
-    
+
 
     public ObservableList<Product> getProduceCategory() {
         Connection connection = TestConnection.ConnectionUtil.connectdb();
@@ -369,6 +369,7 @@ public class ProductCategoryManagement {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
 
         return stack;
 
