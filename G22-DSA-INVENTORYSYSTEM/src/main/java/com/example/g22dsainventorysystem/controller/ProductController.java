@@ -221,7 +221,7 @@ private ComboBox catComboBox,catComboBox2;
 //        Alert alert = new Alert(Alert.AlertType.ERROR, "Error " + getUsers(), ButtonType.OK);
 
         if (catComboBox2.getValue().toString().equals("BEVERAGES")) {
-           viewProducts.setItems(pcm.delete()); 
+           viewProducts.setItems(pcm.deleteBe());
         }
     }
 

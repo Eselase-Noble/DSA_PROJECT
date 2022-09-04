@@ -55,7 +55,7 @@ public class ProductCategoryManagement {
 
     }
 
-    public ObservableStack<Product> delete(){
+    public ObservableStack<Product> deleteBe(){
         Connection connection = TestConnection.ConnectionUtil.connectdb();
         ObservableStack<Product> stack = new ObservableStack<>();
 
@@ -100,6 +100,31 @@ public class ProductCategoryManagement {
 
     }
 
+
+
+    public ObservableStack<Product> deleteBakeyCategory() {
+        Connection connection = TestConnection.ConnectionUtil.connectdb();
+        ObservableStack<Product> stack = new ObservableStack<>();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT Product.Product_ID,Product.Product_Name,Product.Selling_Price,Product.Quantity,Product.Product_Code,Product.Cost_Price,Category.Category_Name FROM `Product` INNER JOIN `Category` ON Product.Category_ID = Category.Category_ID WHERE Category_Name = 'BREAD/BAKERY';");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                stack.push(new Product(resultSet.getInt("Product_ID"), resultSet.getString("Product_Name"), resultSet.getDouble("Selling_Price"),
+                        resultSet.getInt("Quantity"),resultSet.getString("Product_Code"), resultSet.getDouble("Cost_Price"), resultSet.getString("Category_Name")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        stack.pop();
+        return stack;
+
+
+    }
+
+
+
     public ObservableStack<Product> getCannedCategory() {
         Connection connection = TestConnection.ConnectionUtil.connectdb();
         ObservableStack<Product> stack = new ObservableStack<>();
@@ -115,6 +140,26 @@ public class ProductCategoryManagement {
             throw new RuntimeException(e);
         }
 
+        return stack;
+
+
+    }
+
+    public ObservableStack<Product> deleteCannedCategory() {
+        Connection connection = TestConnection.ConnectionUtil.connectdb();
+        ObservableStack<Product> stack = new ObservableStack<>();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT Product.Product_ID,Product.Product_Name,Product.Selling_Price,Product.Quantity,Product.Product_Code,Product.Cost_Price,Category.Category_Name FROM `Product` INNER JOIN `Category` ON Product.Category_ID = Category.Category_ID WHERE Category_Name = 'CANNED/JARRED GOODS';");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                stack.push(new Product(resultSet.getInt("Product_ID"), resultSet.getString("Product_Name"), resultSet.getDouble("Selling_Price"),
+                        resultSet.getInt("Quantity"),resultSet.getString("Product_Code"), resultSet.getDouble("Cost_Price"), resultSet.getString("Category_Name")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        stack.pop();
         return stack;
 
 
@@ -140,6 +185,29 @@ public class ProductCategoryManagement {
 
     }
 
+
+    public ObservableStack<Product> deleteDairyCategory() {
+        Connection connection = TestConnection.ConnectionUtil.connectdb();
+        ObservableStack<Product> stack = new ObservableStack<>();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT Product.Product_ID,Product.Product_Name,Product.Selling_Price,Product.Quantity,Product.Product_Code,Product.Cost_Price,Category.Category_Name FROM `Product` INNER JOIN `Category` ON Product.Category_ID = Category.Category_ID WHERE Category_Name = 'DAIRY';");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                stack.push(new Product(resultSet.getInt("Product_ID"), resultSet.getString("Product_Name"), resultSet.getDouble("Selling_Price"),
+                        resultSet.getInt("Quantity"),resultSet.getString("Product_Code"), resultSet.getDouble("Cost_Price"), resultSet.getString("Category_Name")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        stack.pop();
+        return stack;
+
+
+    }
+
+
+
     public ObservableQueue<Product> getDryCategory() {
         Connection connection = TestConnection.ConnectionUtil.connectdb();
         ObservableQueue<Product> stack = new ObservableQueue<>();
@@ -159,6 +227,28 @@ public class ProductCategoryManagement {
 
 
     }
+
+    public ObservableQueue<Product> deleteDryCategory() {
+        Connection connection = TestConnection.ConnectionUtil.connectdb();
+        ObservableQueue<Product> stack = new ObservableQueue<>();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT Product.Product_ID,Product.Product_Name,Product.Selling_Price,Product.Quantity,Product.Product_Code,Product.Cost_Price,Category.Category_Name FROM `Product` INNER JOIN `Category` ON Product.Category_ID = Category.Category_ID WHERE Category_Name = 'DRY/BAKING GOODS';");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                stack.add(new Product(resultSet.getInt("Product_ID"), resultSet.getString("Product_Name"), resultSet.getDouble("Selling_Price"),
+                        resultSet.getInt("Quantity"),resultSet.getString("Product_Code"), resultSet.getDouble("Cost_Price"), resultSet.getString("Category_Name")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        stack.remove();
+        return stack;
+
+
+    }
+
+
 
     public ObservableQueue<Product> getFrozenCategory() {
         Connection connection = TestConnection.ConnectionUtil.connectdb();
@@ -180,6 +270,29 @@ public class ProductCategoryManagement {
 
     }
 
+    public ObservableQueue<Product> deleteFrozenCategory() {
+        Connection connection = TestConnection.ConnectionUtil.connectdb();
+        ObservableQueue<Product> stack = new ObservableQueue<>();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT Product.Product_ID,Product.Product_Name,Product.Selling_Price,Product.Quantity,Product.Product_Code,Product.Cost_Price,Category.Category_Name FROM `Product` INNER JOIN `Category` ON Product.Category_ID = Category.Category_ID WHERE Category_Name = 'FROZEN FOODS';");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                stack.add(new Product(resultSet.getInt("Product_ID"), resultSet.getString("Product_Name"), resultSet.getDouble("Selling_Price"),
+                        resultSet.getInt("Quantity"),resultSet.getString("Product_Code"), resultSet.getDouble("Cost_Price"), resultSet.getString("Category_Name")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        stack.remove();
+        return stack;
+
+
+    }
+
+
     public ObservableQueue<Product> getMeatCategory() {
         Connection connection = TestConnection.ConnectionUtil.connectdb();
         ObservableQueue<Product> stack = new ObservableQueue<>();
@@ -199,6 +312,29 @@ public class ProductCategoryManagement {
 
 
     }
+
+    public ObservableQueue<Product> deleteMeatCategory() {
+        Connection connection = TestConnection.ConnectionUtil.connectdb();
+        ObservableQueue<Product> stack = new ObservableQueue<>();
+
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT Product.Product_ID,Product.Product_Name,Product.Selling_Price,Product.Quantity,Product.Product_Code,Product.Cost_Price,Category.Category_Name FROM `Product` INNER JOIN `Category` ON Product.Category_ID = Category.Category_ID WHERE Category_Name = 'MEAT';");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                stack.add(new Product(resultSet.getInt("Product_ID"), resultSet.getString("Product_Name"), resultSet.getDouble("Selling_Price"),
+                        resultSet.getInt("Quantity"),resultSet.getString("Product_Code"), resultSet.getDouble("Cost_Price"), resultSet.getString("Category_Name")));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        stack.remove();
+        return stack;
+
+
+    }
+    
+
     public ObservableList<Product> getProduceCategory() {
         Connection connection = TestConnection.ConnectionUtil.connectdb();
         ObservableList<Product> stack = FXCollections.observableArrayList();
