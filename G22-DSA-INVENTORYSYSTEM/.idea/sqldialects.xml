@@ -6,5 +6,6 @@
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/g22dsainventorysystem/controller/VendorController.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/g22dsainventorysystem/structures/ProductCategoryManagement.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/g22dsainventorysystem/structures/TestConnection.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/g22dsainventorysystem/tracks/LetConnects.java" dialect="GenericSQL" />
   </component>
 </project>

@@ -14,7 +14,8 @@ public class Sales {
     Vendors vendors = new Vendors();
     public Sales(){}
 
-    public Sales( int bill_ID, int Vendor_ID, Date date){
+    public Sales(int Sales_ID, int bill_ID, int Vendor_ID, Date date){
+        this.sales_ID= Sales_ID;
         bill_ID = bills.getBill_ID();
         this.Bill_ID = bill_ID;
         Vendor_ID = vendors.getVendor_ID();

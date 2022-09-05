@@ -2,14 +2,14 @@ package com.example.g22dsainventorysystem.models;
 
 public class Bills {
     private Integer Bill_ID;
-    private Enum PaymentType;
+    private String PaymentType;
     private Double TotalAmount;
     private java.util.Date Date;
     private Integer Issued_ID;
     IssuedGoods issuedGoods = new IssuedGoods();
     public Bills(){}
 
-    public Bills(int Bill_ID, Enum paymentType, Double totalAmount, java.util.Date date, int issued_ID){
+    public Bills(int Bill_ID, String paymentType, Double totalAmount, java.util.Date date, int issued_ID){
         this.Bill_ID = Bill_ID;
         this.PaymentType = paymentType;
         this.TotalAmount = totalAmount;
@@ -27,11 +27,11 @@ public class Bills {
         Bill_ID = bill_ID;
     }
 
-    public Enum getPaymentType() {
+    public String getPaymentType() {
         return PaymentType;
     }
 
-    public void setPaymentType(Enum paymentType) {
+    public void setPaymentType(String paymentType) {
         PaymentType = paymentType;
     }
 
