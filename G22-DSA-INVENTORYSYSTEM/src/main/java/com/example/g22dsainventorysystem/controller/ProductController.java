@@ -122,7 +122,7 @@ private ComboBox catComboBox,catComboBox2;
 
          stack.executeUpdate();
         refreshed();
-//         search_user();
+         search_product();
 
      } catch (SQLException e) {
          throw new RuntimeException(e);
@@ -233,7 +233,13 @@ private ComboBox catComboBox,catComboBox2;
             viewProducts.setItems(pcm.deleteFrozenCategory());
         } else if (catComboBox2.getValue().toString().equals("MEAT")) {
             viewProducts.setItems(pcm.deleteMeatCategory());
-        } else  {
+        } else if (catComboBox2.getValue().toString().equals("PRODUCE")){
+            Delete();
+        } else if (catComboBox2.getValue().toString().equals("CLEANERS")) {
+            Delete();
+        } else if (catComboBox2.getValue().toString().equals("PAPER GOODS")) {
+            Delete();
+        } else if (catComboBox2.getValue().toString().equals("PERSONAL CARE")) {
             Delete();
         }
     }
