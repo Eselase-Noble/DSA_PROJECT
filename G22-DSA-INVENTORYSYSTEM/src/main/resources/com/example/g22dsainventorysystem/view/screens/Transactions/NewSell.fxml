@@ -5,12 +5,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Group xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Group xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane id="AnchorPane" layoutX="10.0" layoutY="10.0" prefHeight="642.0" prefWidth="874.0" stylesheets="@../../../styles/PopUp.css">
          <children>
             <BorderPane prefHeight="500.0" prefWidth="700.0" stylesheets="@../../../styles/MainStyle.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <center>
+               <top>
                   <Pane prefHeight="607.0" prefWidth="868.0" BorderPane.alignment="CENTER">
                      <children>
                         <GridPane layoutX="48.0" layoutY="98.0">
@@ -136,7 +136,7 @@
                         </Label>
                      </children>
                   </Pane>
-               </center>
+               </top>
             </BorderPane>
          </children>
       </AnchorPane>
