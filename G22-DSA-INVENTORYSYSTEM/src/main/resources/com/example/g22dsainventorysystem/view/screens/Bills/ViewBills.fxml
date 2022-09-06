@@ -13,7 +13,7 @@
     <children>
         <BorderPane layoutX="6.0" prefHeight="509.0" prefWidth="763.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
             <center>
-                <TableView fx:id="viewCustomer" editable="true" onMouseClicked="#getSelected" onSort="#getSelected" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: none;" BorderPane.alignment="CENTER">
+                <TableView fx:id="viewCustomer" editable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: none;" BorderPane.alignment="CENTER">
                     <columns>
                         <TableColumn fx:id="viewVendorID" prefWidth="104.0" text="Bill_ID" />
                         <TableColumn fx:id="viewVendorName" prefWidth="104.0" text="Issue_ID" />
@@ -31,16 +31,16 @@
             <top>
                 <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="409.0" spacing="10.0" BorderPane.alignment="CENTER_LEFT">
                     <children>
-                        <TextField fx:id="tfSearch" onAction="#search_user" prefHeight="25.0" prefWidth="203.0" promptText="Search Bill" />
-                        <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#refreshed" onMouseClicked="#getSelected" prefHeight="32.0" prefWidth="132.0" style="-fx-background-color: navy;" text="Refresh" textFill="WHITE" />
+                        <TextField fx:id="tfSearch"  prefHeight="25.0" prefWidth="203.0" promptText="Search Bill" />
+                        <Button fx:id="btnRefresh" mnemonicParsing="false"  prefHeight="32.0" prefWidth="132.0" style="-fx-background-color: navy;" text="Refresh" textFill="WHITE" />
                     </children>
                 </HBox>
             </top>
             <bottom>
                 <HBox alignment="CENTER_RIGHT" prefHeight="69.0" prefWidth="763.0" spacing="10.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Button fx:id="btnaddBill" mnemonicParsing="false" onAction="#openAddBill" style="-fx-background-color: navy;" text="Add New Bill" textFill="WHITE" />
-                        <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#Delete" style="-fx-background-color: navy;" text="Delete" textFill="WHITE" />
+                        <Button fx:id="btnaddBill" mnemonicParsing="false"  style="-fx-background-color: navy;" text="Add New Bill" textFill="WHITE" />
+                        <Button fx:id="btnDelete" mnemonicParsing="false"  style="-fx-background-color: navy;" text="Delete" textFill="WHITE" />
                     </children>
                     <padding>
                         <Insets right="10.0" />

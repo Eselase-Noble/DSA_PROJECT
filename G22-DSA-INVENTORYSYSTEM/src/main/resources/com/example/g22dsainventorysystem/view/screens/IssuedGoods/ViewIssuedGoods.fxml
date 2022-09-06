@@ -38,6 +38,7 @@
             <bottom>
                 <HBox alignment="CENTER_RIGHT" prefHeight="69.0" prefWidth="763.0" spacing="10.0" BorderPane.alignment="CENTER">
                     <children>
+                  <Button fx:id="btnUpdateGoods" mnemonicParsing="false" onAction="#updateIssueGoods" style="-fx-background-color: navy;" text="Update Goods" textFill="WHITE" />
                         <Button fx:id="btnIssueGoods" mnemonicParsing="false" onAction="#openIssuedGoodsForm" style="-fx-background-color: navy;" text="Issue Goods" textFill="WHITE" />
                         <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#Delete" style="-fx-background-color: navy;" text="Delete" textFill="WHITE" />
                     </children>

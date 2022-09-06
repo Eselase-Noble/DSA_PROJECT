@@ -19,6 +19,9 @@ public class IssuedGoodsController {
 
     @FXML
     private Button btnCancel;
+
+    @FXML
+    private Button btnUpdateCancel;
     public void search_user(ActionEvent actionEvent) {
     }
 
@@ -54,5 +57,32 @@ public class IssuedGoodsController {
     }
 
     public void addIssuedGoods(ActionEvent actionEvent) {
+    }
+
+    public void updateClose(ActionEvent event) {
+        Stage stage = (Stage) btnUpdateCancel.getScene().getWindow();
+        stage.close();
+    }
+
+
+    public void updateIssueGoods(ActionEvent event) {
+        URL fxmlLocation = HelloApplication.class.getResource("view/screens/IssuedGoods/UpdateIssueGoods.fxml");
+        FXMLLoader loader5 = new FXMLLoader(fxmlLocation);
+        try {
+            loader5.load();
+            Parent parent = loader5.getRoot();
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+
+            stage.show();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void savedUpdatedGoods(ActionEvent event) {
+
     }
 }

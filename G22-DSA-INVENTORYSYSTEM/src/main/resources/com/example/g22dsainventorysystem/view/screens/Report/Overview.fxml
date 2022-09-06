@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="608.0" prefWidth="871.0" stylesheets="@../../styles/Home.css" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane id="AnchorPane" prefHeight="608.0" prefWidth="871.0" stylesheets="@../../styles/Home.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <BorderPane layoutX="262.0" layoutY="138.0" prefHeight="540.0" prefWidth="723.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -39,7 +43,6 @@
                                                         <Font name="System Bold" size="27.0" />
                                                     </font>
                                                 </Label>
-                                                <Text fx:id="txtOrgAddress" strokeType="OUTSIDE" strokeWidth="0.0" text="Organization Address" textAlignment="CENTER" wrappingWidth="647.7294921875" />
                                                 <Text fx:id="txtorgPhoneNumber" strokeType="OUTSIDE" strokeWidth="0.0" text="Org. Phone Number" textAlignment="CENTER" wrappingWidth="647.7294921875" />
                                             </children>
                                         </VBox>
@@ -55,7 +58,6 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                             <children>
                                                 <Label text="Stock Value :" GridPane.rowIndex="1" />
@@ -64,36 +66,30 @@
                                                         <Font size="12.0" />
                                                     </font>
                                                 </Label>
-                                                <Label text="Total Supplyer :" GridPane.rowIndex="2" />
-                                                <Label text="Total Employee :" GridPane.rowIndex="5" />
-                                                <Label fx:id="lblTotalItem" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2">
+                                                <Label text="Total Vendor :" GridPane.rowIndex="2" />
+                                                <Label fx:id="lblTotalItem" text="12878219" GridPane.columnIndex="1" GridPane.columnSpan="2">
                                                     <font>
                                                         <Font size="20.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="lblStockValue" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                                                <Label fx:id="lblStockValue" text="123213" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1">
                                                     <font>
                                                         <Font size="20.0" />
                                                     </font>
                                                 </Label>
-                                                <Label fx:id="lblTotalSupplyer" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
-                                                    <font>
-                                                        <Font size="20.0" />
-                                                    </font>
-                                                </Label>
-                                                <Label fx:id="lblTotalEmployee" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="5">
+                                                <Label fx:id="lblTotalSupplyer" text="55" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="2">
                                                     <font>
                                                         <Font size="20.0" />
                                                     </font>
                                                 </Label>
                                                 <Label text="Total Sell :" GridPane.rowIndex="3" />
-                                                <Label fx:id="lblTotalSell" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
+                                                <Label fx:id="lblTotalSell" text="565" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
                                                     <font>
                                                         <Font size="20.0" />
                                                     </font>
                                                 </Label>
                                                 <Label text="Sell Value :" GridPane.rowIndex="4" />
-                                                <Label fx:id="lblSellValue" text="Label" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
+                                                <Label fx:id="lblSellValue" text="645423" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4">
                                                     <font>
                                                         <Font size="20.0" />
                                                     </font>

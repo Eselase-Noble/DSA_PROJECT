@@ -34,6 +34,14 @@ private TextField categoryName,tfSearch;
 @FXML
 private TextArea categoryDescription;
 
+
+
+    @FXML
+    private Button btnCancelupdate;
+
+    @FXML
+    private Button buttonSaveupdate;
+
 @FXML
 private Button buttonSave;
 @FXML
@@ -147,6 +155,21 @@ public void insert(javafx.event.ActionEvent activeEvent){
     }
     @FXML
     public void updateCategory() {
+        URL fxmlLocation = HelloApplication.class.getResource("view/screens/Products/updatProductCategory.fxml");
+        FXMLLoader loader1 = new FXMLLoader(fxmlLocation);
+        try {
+            loader1.load();
+            Parent parent = loader1.getRoot();
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.TRANSPARENT);
+
+            stage.show();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     @FXML
     public void delete() {
@@ -154,6 +177,12 @@ public void insert(javafx.event.ActionEvent activeEvent){
     @FXML
     public void Cancel() {
         Stage stage = (Stage) btnCancel.getScene().getWindow();
+        stage.close();
+    }
+
+
+    public void CancelUpdate(ActionEvent event) {
+        Stage stage = (Stage)  btnCancelupdate.getScene().getWindow();
         stage.close();
     }
 }
