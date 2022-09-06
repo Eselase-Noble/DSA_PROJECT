@@ -1,5 +1,6 @@
 package com.example.g22dsainventorysystem.controller;
 
+import com.example.g22dsainventorysystem.HelloApplication;
 import com.example.g22dsainventorysystem.structures.ObservableHashMap;
 import com.example.g22dsainventorysystem.structures.TestConnection;
 import com.example.g22dsainventorysystem.structures.Vendors;
@@ -8,12 +9,20 @@ import javafx.collections.ObservableMap;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -28,6 +37,9 @@ public class VendorController {
     TextArea vendorContact,vendorAddress, vendorEmail, vendorLocation;
     @FXML
     TextField vendorName, tfSearch,vendorID;
+
+    @FXML
+    private Button cancelbtn;
 
     TableColumn<Map<String, Vendors>, String> column1 = new TableColumn<>("Key");
 
@@ -316,6 +328,67 @@ HashMap hashMaps;
 
 
     }
+    @FXML
+    public void addVendor(javafx.event.ActionEvent actionEvent) {
+        URL fxmlLocation = HelloApplication.class.getResource("view/screens/Vendor/AddVendor.fxml");
+        FXMLLoader loader2 = new FXMLLoader(fxmlLocation);
+        try {
+            loader2.load();
+            Parent parent = loader2.getRoot();
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.TRANSPARENT);
+
+            stage.show();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void close(javafx.event.ActionEvent actionEvent) {
+        Stage stage = (Stage) cancelbtn.getScene().getWindow();
+        stage.close();
+    }
+
+    public void saveVendor(javafx.event.ActionEvent actionEvent) {
+    }
+
+    /*
+    *  @FXML
+    private Button btnSave;
+
+
+
+    @FXML
+    private Label lblCustomerContent;
+
+    @FXML
+    private TextArea vendorAddress;
+
+    @FXML
+    private TextArea vendorContact;
+
+    @FXML
+    private TextArea vendorEmail;
+
+    @FXML
+    private TextArea vendorLocation;
+
+    @FXML
+    private TextField vendorName;
+
+    @FXML
+    void close(ActionEvent event) {
+
+    }
+
+    @FXML
+    void saveVendor(ActionEvent event) {
+
+    }
+    * */
 }
 
 

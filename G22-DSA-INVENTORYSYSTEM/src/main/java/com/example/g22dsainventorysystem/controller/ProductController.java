@@ -1,15 +1,25 @@
 package com.example.g22dsainventorysystem.controller;
 
+import com.example.g22dsainventorysystem.HelloApplication;
 import com.example.g22dsainventorysystem.structures.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import javax.swing.*;
+import java.io.IOException;
+import java.net.URL;
 import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -18,10 +28,13 @@ import java.sql.SQLException;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
-public class ProductController {
+public class ProductController{
 
 @FXML
 private TextField productNameText,productQuantityText,sellingPriceText,costPriceText, productIDTextField;
+
+@FXML
+private Button btnCancel;
 
 @FXML
 private TableView<Product> viewProducts ;
@@ -271,5 +284,30 @@ private ComboBox catComboBox,catComboBox2;
         }
     }
 
+    @FXML
+    public void addProduct(ActionEvent actionEvent) {
+        URL fxmlLocation = HelloApplication.class.getResource("view/screens/Products/AddProduct.fxml");
+        FXMLLoader loader = new FXMLLoader(fxmlLocation);
+        try {
+            loader.load();
+            Parent parent = loader.getRoot();
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.TRANSPARENT);
 
+            stage.show();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+    @FXML
+    public void cancelAddProduct() {
+        Stage stage = (Stage) btnCancel.getScene().getWindow();
+        stage.close();
+    }
 }

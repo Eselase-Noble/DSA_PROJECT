@@ -59,14 +59,13 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button fx:id="addVendor" layoutX="255.0" layoutY="444.0" mnemonicParsing="false" onAction="#OnActionButton" style="-fx-background-color: navy;" text="Add Vendor" textFill="WHITE" />
-            <Button fx:id="btnSave" layoutX="117.0" layoutY="444.0" mnemonicParsing="false" style="-fx-background-color: navy;" text="Save" textFill="WHITE" />
+            <Button fx:id="cancelbtn" layoutX="255.0" layoutY="444.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: navy;" text="Cancel" textFill="WHITE" />
+            <Button fx:id="btnSave" layoutX="117.0" layoutY="444.0" mnemonicParsing="false" onAction="#saveVendor" style="-fx-background-color: navy;" text="Save" textFill="WHITE" />
          </children>
          <stylesheets>
             <URL value="@../../../styles/PopUp.css" />
             <URL value="@../../../styles/MainStyle.css" />
          </stylesheets>
       </AnchorPane>
-      <Button fx:id="btnClose" layoutX="450.0" layoutY="-3.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="27.0" stylesheets="@../../../styles/btnOnText.css" />
    </children>
 </Group>

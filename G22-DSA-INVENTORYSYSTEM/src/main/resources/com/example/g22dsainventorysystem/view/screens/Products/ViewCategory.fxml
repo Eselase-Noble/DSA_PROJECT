@@ -53,9 +53,9 @@
          <bottom>
             <HBox alignment="CENTER_RIGHT" prefHeight="72.0" prefWidth="729.0" spacing="30.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#update" style="-fx-background-color: navy;" text="Add New" textFill="WHITE" />
-                  <Button fx:id="btnUpdate" mnemonicParsing="false" style="-fx-background-color: navy;" text="Update" textFill="WHITE" />
-                  <Button fx:id="btnDelete" mnemonicParsing="false" style="-fx-background-color: navy;" text="Delete" textFill="WHITE" />
+                  <Button fx:id="btnAdd" mnemonicParsing="false" onAction="#addCategory" style="-fx-background-color: navy;" text="Add New" textFill="WHITE" />
+                  <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#updateCategory" style="-fx-background-color: navy;" text="Update" textFill="WHITE" />
+                  <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#delete" style="-fx-background-color: navy;" text="Delete" textFill="WHITE" />
                </children>
             </HBox>
          </bottom>
