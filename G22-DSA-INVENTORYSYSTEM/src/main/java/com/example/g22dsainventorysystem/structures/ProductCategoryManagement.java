@@ -68,12 +68,17 @@ public class ProductCategoryManagement {
                         resultSet.getDouble("Cost_Price"), resultSet.getString("Category_Name")));
 
             }
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         System.out.println(stack);
+        int id = stack.pop().getProduct_ID();
         stack.pop();
-        System.out.println(stack);
+        System.out.println(id);
+        
+
+
         return stack;
 
 
@@ -112,12 +117,13 @@ public class ProductCategoryManagement {
             while (resultSet.next()) {
                 stack.push(new Product(resultSet.getInt("Product_ID"), resultSet.getString("Product_Name"), resultSet.getDouble("Selling_Price"),
                         resultSet.getInt("Quantity"),resultSet.getString("Product_Code"), resultSet.getDouble("Cost_Price"), resultSet.getString("Category_Name")));
+                stack.pop();
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        stack.pop();
+
         return stack;
 
 

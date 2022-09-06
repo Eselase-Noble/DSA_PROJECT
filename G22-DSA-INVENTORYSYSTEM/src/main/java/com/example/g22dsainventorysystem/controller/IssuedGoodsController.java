@@ -1,16 +1,19 @@
 package com.example.g22dsainventorysystem.controller;
 
 import com.example.g22dsainventorysystem.HelloApplication;
+import com.example.g22dsainventorysystem.models.IssuedGoods;
 import com.example.g22dsainventorysystem.structures.TestConnection;
+import com.example.g22dsainventorysystem.tracks.LetConnects;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -28,18 +31,47 @@ public class IssuedGoodsController {
     @FXML
     private TextArea salesProductName,salesProductQuantity,totalPrice;
     @FXML
-    private TextField saleVendorName;
+    private TextField saleVendorName, tfSearch;
 
     @FXML
     private DatePicker datePicker;
 
+    @FXML
+    private TableView <IssuedGoods> viewIssuedGoods;
 
+    @FXML
+
+    private TableColumn<IssuedGoods, Integer> viewIssuedID;
+
+    @FXML
+
+    private TableColumn<IssuedGoods, Integer> viewQuantity;
+
+    @FXML
+
+    private TableColumn<IssuedGoods, Integer> viewProductID;
+
+    @FXML
+
+    private TableColumn<IssuedGoods, Double> viewSellingPrice;
+
+    @FXML
+
+    private TableColumn<IssuedGoods, Double> viewTotalAmount;
+
+    @FXML
+
+    private TableColumn<IssuedGoods, DatePicker> viewDate;
+
+
+    ObservableList<IssuedGoods> listMs;
+    ObservableList<IssuedGoods> dataList;
 
     @FXML
     private Button btnUpdateCancel;
 
     Connection connection = TestConnection.ConnectionUtil.connectdb();
-    public void insertInto(javafx.event.ActionEvent activeEvent){
+    public void insertInto(){
         String stateMent = "INSERT INTO `IssuedGoods`(`Quantity`, `Product_ID`, `Selling_Price`, `TotalAmount`, `Date`)VALUES(?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareStatement(stateMent);
@@ -53,7 +85,7 @@ public class IssuedGoodsController {
 
             ps.executeUpdate();
             refreshed();
-            search_user();
+            search_Sales();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -61,10 +93,53 @@ public class IssuedGoodsController {
     }
 
 
-    public void search_user() {
-    }
+    @FXML
+    void search_Sales() {
 
+        //col_id.setCellValueFactory(new PropertyValueFactory<Vendors,Integer>("id"));
+        //viewVendorID.setCellValueFactory(new PropertyValueFactory<Vendors, Integer>("Vender_ID"));
+        viewIssuedID.setCellValueFactory(new PropertyValueFactory<IssuedGoods, Integer>("Product_Name"));
+        //viewCategoryDescription.setCellValueFactory(new PropertyValueFactory<Category, String>("PhoneNumber"));
+
+
+        LetConnects letConnects = new LetConnects();
+        listMs = letConnects.getIssuedGoods();
+        viewIssuedGoods.setItems(dataList);
+        FilteredList<IssuedGoods> filteredData = new FilteredList<>( dataList, b -> true);
+        tfSearch.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(issuedGoods -> {
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+
+                if (issuedGoods.getIssued_ID() != -1) {
+                    return true; // Filter matches username
+                }
+
+                else
+                    return false; // Does not match.
+            });
+        });
+        SortedList<IssuedGoods> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(viewIssuedGoods.comparatorProperty());
+        viewIssuedGoods.setItems(sortedData);
+
+    }
     public void refreshed() {
+        viewIssuedID.setCellValueFactory(new PropertyValueFactory<IssuedGoods, Integer>("Issued_ID"));
+        viewQuantity.setCellValueFactory(new PropertyValueFactory<IssuedGoods, Integer>("Quantity"));
+        viewProductID.setCellValueFactory(new PropertyValueFactory<IssuedGoods, Integer>("Product_ID"));
+        viewSellingPrice.setCellValueFactory(new PropertyValueFactory<IssuedGoods, Double>("Date"));
+        viewTotalAmount.setCellValueFactory(new PropertyValueFactory<IssuedGoods, Double>("Issued_ID"));
+        viewDate.setCellValueFactory(new PropertyValueFactory<IssuedGoods, DatePicker>("Product_Name"));
+
+
+
+        LetConnects letConnects = new LetConnects();
+        listMs = letConnects.getIssuedGoods();
+        viewIssuedGoods.setItems(listMs);
+        //categoryTable.setUserData(listMs);
     }
 
     public void getSelected(MouseEvent mouseEvent) {

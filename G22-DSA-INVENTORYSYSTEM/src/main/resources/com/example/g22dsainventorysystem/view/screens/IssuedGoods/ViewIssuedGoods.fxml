@@ -11,11 +11,11 @@
                 <TableView fx:id="viewCustomer" editable="true" onMouseClicked="#getSelected" onSort="#getSelected" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: none;" BorderPane.alignment="CENTER">
                     <columns>
                         <TableColumn fx:id="viewIssuedID" prefWidth="104.0" text="Issued_ID" />
-                        <TableColumn fx:id="viewVendorName" prefWidth="104.0" text="Quantity" />
-                        <TableColumn fx:id="viewVendorCon" prefWidth="124.0" text="Product_ID" />
-                        <TableColumn fx:id="viewVendorEmail" prefWidth="137.0" text="Selling_Price" />
-                        <TableColumn fx:id="viewVendorlocation" prefWidth="123.0" text="TotalAmount" />
-                  <TableColumn fx:id="viewVendorCon1" prefWidth="124.0" text="Date" />
+                        <TableColumn fx:id="viewQuantity" prefWidth="104.0" text="Quantity" />
+                        <TableColumn fx:id="viewProductID" prefWidth="124.0" text="Product_ID" />
+                        <TableColumn fx:id="viewSellingPrice" prefWidth="137.0" text="Selling_Price" />
+                        <TableColumn fx:id="viewTotalAmount" prefWidth="123.0" text="TotalAmount" />
+                  <TableColumn fx:id="viewDate" prefWidth="124.0" text="Date" />
                         <!--                 <TableColumn fx:id="tblClmTotalBuy" prefWidth="146.0" text="Total Buy" />-->
                     </columns>
                     <columnResizePolicy>
@@ -27,7 +27,7 @@
                 <HBox alignment="CENTER_LEFT" prefHeight="65.0" prefWidth="409.0" spacing="10.0" BorderPane.alignment="CENTER_LEFT">
                     <children>
                         <TextField fx:id="tfSearch" onAction="#search_user" prefHeight="25.0" prefWidth="203.0" promptText="Search Issued Goods" />
-                        <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#refreshed" onMouseClicked="#getSelected" prefHeight="32.0" prefWidth="132.0" style="-fx-background-color: navy;" text="Refresh" textFill="WHITE" />
+                        <Button fx:id="btnRefresh" mnemonicParsing="false" onAction="#insertInto" onKeyPressed="#insertInto" onMouseClicked="#insertInto" prefHeight="32.0" prefWidth="132.0" style="-fx-background-color: navy;" text="Refresh" textFill="WHITE" />
                     </children>
                 </HBox>
             </top>
