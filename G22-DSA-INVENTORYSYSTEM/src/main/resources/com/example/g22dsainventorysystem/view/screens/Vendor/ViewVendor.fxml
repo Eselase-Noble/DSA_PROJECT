@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 
-<AnchorPane id="AnchorPane" fx:id="acCustomerMainContent" prefHeight="509.0" prefWidth="763.0" stylesheets="@../../../styles/MainStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.g22dsainventorysystem.controller.VendorController">
+<AnchorPane id="AnchorPane" fx:id="acCustomerMainContent" prefHeight="509.0" prefWidth="763.0" stylesheets="@../../../styles/MainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.g22dsainventorysystem.controller.VendorController">
    <children>
       <BorderPane layoutX="6.0" prefHeight="509.0" prefWidth="763.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -34,8 +39,7 @@
          <bottom>
             <HBox alignment="CENTER_RIGHT" prefHeight="69.0" prefWidth="763.0" spacing="10.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" text="Button" />
-                  <Button fx:id="btnAddNewVendor" mnemonicParsing="false" onAction="#refreshed" style="-fx-background-color: navy;" text="Add New Customer" textFill="WHITE" />
+                  <Button fx:id="btnAddNewVendor" mnemonicParsing="false" onAction="#addVendor" style="-fx-background-color: navy;" text="Add New Customer" textFill="WHITE" />
                   <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#Delete" style="-fx-background-color: navy;" text="Delete" textFill="WHITE" />
                </children>
                <padding>

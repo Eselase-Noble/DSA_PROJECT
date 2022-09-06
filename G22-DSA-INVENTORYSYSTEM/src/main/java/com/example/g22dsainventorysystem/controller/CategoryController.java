@@ -1,16 +1,27 @@
 package com.example.g22dsainventorysystem.controller;
 
+import com.example.g22dsainventorysystem.HelloApplication;
 import com.example.g22dsainventorysystem.structures.Category;
 import com.example.g22dsainventorysystem.structures.ObservableStack;
 import com.example.g22dsainventorysystem.structures.TestConnection;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -25,6 +36,8 @@ private TextArea categoryDescription;
 
 @FXML
 private Button buttonSave;
+@FXML
+private Button btnCancel;
 
 @FXML
 private TableView<Category> categoryTable;
@@ -114,5 +127,33 @@ public void insert(javafx.event.ActionEvent activeEvent){
         sortedData.comparatorProperty().bind(categoryTable.comparatorProperty());
         categoryTable.setItems(sortedData);
     }
+    @FXML
+    public void addCategory(ActionEvent event) {
+        URL fxmlLocation = HelloApplication.class.getResource("view/screens/Products/AddCategory.fxml");
+        FXMLLoader loader1 = new FXMLLoader(fxmlLocation);
+        try {
+            loader1.load();
+            Parent parent = loader1.getRoot();
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.TRANSPARENT);
 
+            stage.show();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @FXML
+    public void updateCategory() {
+    }
+    @FXML
+    public void delete() {
+    }
+    @FXML
+    public void Cancel() {
+        Stage stage = (Stage) btnCancel.getScene().getWindow();
+        stage.close();
+    }
 }

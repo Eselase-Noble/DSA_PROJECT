@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<Group stylesheets="@../../../styles/PopUp.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.g22dsainventorysystem.controller.ProductController">
+<Group stylesheets="@../../../styles/PopUp.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.g22dsainventorysystem.controller.ProductController">
    <children>
       <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="494.0" prefWidth="734.0" stylesheets="@../../../styles/MainStyle.css">
          <children>
@@ -56,11 +62,10 @@
                   <Button fx:id="btnSave" mnemonicParsing="false" onAction="#InsertInto" style="-fx-background-color: navy;" text="Save" textFill="WHITE" GridPane.columnIndex="2" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="11" />
                   <ComboBox fx:id="catComboBox" onAction="#Comboc" onDragDropped="#Comboc" onMouseClicked="#Comboc" prefHeight="31.0" prefWidth="238.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="1" />
                   <TextField fx:id="costPriceText" layoutX="10.0" layoutY="222.0" prefHeight="2.0" prefWidth="262.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
-                  <Button fx:id="btnSave1" layoutX="102.0" layoutY="342.0" mnemonicParsing="false" style="-fx-background-color: navy;" text="Cancel" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="11" />
+                  <Button fx:id="btnCancel" layoutX="102.0" layoutY="342.0" mnemonicParsing="false" onAction="#cancelAddProduct" style="-fx-background-color: navy;" text="Cancel" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="11" />
                </children>
             </GridPane>
          </children>
       </AnchorPane>
-      <Button fx:id="btnClose" layoutX="729.0" layoutY="-4.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="30.0" stylesheets="@../../../styles/btnOnText.css" />
    </children>
 </Group>
