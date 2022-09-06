@@ -98,8 +98,10 @@ HashMap hashMaps;
 
 
          stack.executeUpdate();
-         refreshed();
-         search_user();
+         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added  " + vendorName.getText(), ButtonType.OK);
+         alert.show();
+        // refreshed();
+        // search_user();
 
      } catch (SQLException e) {
          throw new RuntimeException(e);
