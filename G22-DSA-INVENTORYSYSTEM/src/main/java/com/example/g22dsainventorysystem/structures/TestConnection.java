@@ -17,7 +17,7 @@ public class TestConnection {
         public static Connection connectdb() {
             try {
                 Class.forName("com.mysql.jdbc.Driver");
-                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dsainventory", "root", "");
+                Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dsainventory", "root", "Eselase12/.");
                 return conn;
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, e);

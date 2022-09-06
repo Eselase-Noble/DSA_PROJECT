@@ -142,7 +142,7 @@ private ComboBox catComboBox,catComboBox2;
 
 
          stack.executeUpdate();
-         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added" + productName.getText(), ButtonType.OK);
+         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Successfully Added " + productNameText.getText(), ButtonType.OK);
          alert.show();
         refreshed();
          search_product();

@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
-<?import javafx.scene.Group?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
+<?import java.net.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<Group xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.g22dsainventorysystem.controller.VendorController">
+<Group xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.g22dsainventorysystem.controller.VendorController">
    <children>
       <AnchorPane id="AnchorPane" layoutX="11.0" layoutY="8.0" prefHeight="600.0" prefWidth="457.0" style="-fx-background-color: white;">
          <children>
@@ -60,7 +54,7 @@
                </font>
             </Label>
             <Button fx:id="cancelbtn" layoutX="255.0" layoutY="444.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: navy;" text="Cancel" textFill="WHITE" />
-            <Button fx:id="btnSave" layoutX="117.0" layoutY="444.0" mnemonicParsing="false" onAction="#saveVendor" style="-fx-background-color: navy;" text="Save" textFill="WHITE" />
+            <Button fx:id="btnSave" layoutX="117.0" layoutY="444.0" mnemonicParsing="false" onAction="#OnActionButton" style="-fx-background-color: navy;" text="Save" textFill="WHITE" />
          </children>
          <stylesheets>
             <URL value="@../../../styles/PopUp.css" />
