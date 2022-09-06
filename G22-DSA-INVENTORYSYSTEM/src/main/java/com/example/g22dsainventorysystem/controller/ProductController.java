@@ -36,6 +36,14 @@ private TextField productNameText,productQuantityText,sellingPriceText,costPrice
 @FXML
 private Button btnCancel;
 
+    @FXML
+    private Button btnAddSaveUpdate;
+
+    @FXML
+    private Button btnUpdateCancel;
+
+
+
 @FXML
 private TableView<Product> viewProducts ;
 
@@ -311,5 +319,33 @@ private ComboBox catComboBox,catComboBox2;
     public void cancelAddProduct() {
         Stage stage = (Stage) btnCancel.getScene().getWindow();
         stage.close();
+    }
+
+
+
+    public void cancelUpdateProduct(ActionEvent event) {
+        Stage stage = (Stage) btnUpdateCancel.getScene().getWindow();
+        stage.close();
+    }
+
+    public void UpdateProduct(ActionEvent event) {
+        URL fxmlLocation = HelloApplication.class.getResource("view/screens/Products/updateProducts.fxml");
+        FXMLLoader loader = new FXMLLoader(fxmlLocation);
+        try {
+            loader.load();
+            Parent parent = loader.getRoot();
+            Scene scene = new Scene(parent);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.initStyle(StageStyle.TRANSPARENT);
+
+            stage.show();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateSaveProduct(ActionEvent event) {
     }
 }

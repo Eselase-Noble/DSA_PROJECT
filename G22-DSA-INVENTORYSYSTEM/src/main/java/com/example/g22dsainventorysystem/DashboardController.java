@@ -164,7 +164,7 @@ public class DashboardController implements Initializable {
                 loadPage("view/screens/IssuedGoods/ViewIssuedGoods");
 
         }
-        private void loadPage(String page) throws IOException {
+        private void loadPage(String page){
               Parent root = null;
               try {
                       root = FXMLLoader.load(getClass().getResource(page + ".fxml"));
@@ -175,4 +175,20 @@ public class DashboardController implements Initializable {
         }
 
 
+    public void Generatereport(ActionEvent event) {
+            URL fxmlLocation = HelloApplication.class.getResource("view/screens/Report/Overview.fxml");
+            FXMLLoader loader5 = new FXMLLoader(fxmlLocation);
+            try {
+                    loader5.load();
+                    Parent parent = loader5.getRoot();
+                    Scene scene = new Scene(parent);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.initModality(Modality.APPLICATION_MODAL);
+
+                    stage.show();
+            }catch (IOException e) {
+                    e.printStackTrace();
+            }
+    }
 }
