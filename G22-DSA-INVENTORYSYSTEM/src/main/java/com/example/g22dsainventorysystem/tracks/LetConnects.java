@@ -20,15 +20,17 @@ public class LetConnects {
         ObservableList<Bills> list = FXCollections.observableArrayList();
 
         try {
-            PreparedStatement ps = conn.prepareStatement("select * from Bills");
+            PreparedStatement ps = conn.prepareStatement("select * from bills");
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
                 list.add(new Bills(rs.getInt("Bill_ID"), rs.getString("Payment_Type"),
-                        rs.getDouble("TotalAmount"), rs.getDate("Date"), rs.getInt("Issued_ID")));
+                        rs.getDouble("TotalAmount"), rs.getDate("Date"), rs.getInt("Issued_ID"), rs.getString("Product_Name"), rs.getString("Vendor_Name")));
             }
+
         } catch (Exception e) {
         }
+        System.out.println(list);
         return list;
     }
 

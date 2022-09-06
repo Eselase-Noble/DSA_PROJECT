@@ -47,12 +47,15 @@
                         <Label text="Product Name" GridPane.rowIndex="4" />
                         <Label text="Vendor" GridPane.rowIndex="6" />
                         <Label text="Total Amount" GridPane.rowIndex="8" />
-                        <TextField fx:id="billID" prefHeight="33.0" prefWidth="341.0" GridPane.columnSpan="4" GridPane.rowIndex="1" />
-                        <TextArea fx:id="vendorContact" prefHeight="58.0" prefWidth="395.0" GridPane.columnSpan="4" GridPane.rowIndex="3" GridPane.rowSpan="1" />
-                        <TextArea fx:id="vendorEmail" prefHeight="58.0" prefWidth="395.0" GridPane.columnSpan="4" GridPane.rowIndex="5" GridPane.rowSpan="1" />
-                        <TextArea fx:id="vendorAddress" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="4" GridPane.rowIndex="7" GridPane.rowSpan="1" />
-                        <TextArea fx:id="vendorLocation" prefHeight="73.0" prefWidth="402.0" GridPane.columnSpan="4" GridPane.rowIndex="9" GridPane.rowSpan="1" />
+                        <TextField fx:id="billIDTextField" prefHeight="33.0" prefWidth="341.0" GridPane.columnSpan="4" GridPane.rowIndex="1" />
+                        <TextArea fx:id="issueIDTextField" prefHeight="58.0" prefWidth="395.0" GridPane.columnSpan="4" GridPane.rowIndex="3" GridPane.rowSpan="1" />
+                        <TextArea fx:id="prroductNameText" prefHeight="58.0" prefWidth="395.0" GridPane.columnSpan="4" GridPane.rowIndex="5" GridPane.rowSpan="1" />
+                        <TextArea fx:id="VendorNameText" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="4" GridPane.rowIndex="7" GridPane.rowSpan="1" />
+                        <TextArea fx:id="totalAmountText" prefHeight="73.0" prefWidth="402.0" GridPane.columnSpan="4" GridPane.rowIndex="9" GridPane.rowSpan="1" />
                   <Label text="Payment Type" GridPane.rowIndex="10" />
+                  <ComboBox fx:id="paymentComboBox" accessibleText="Cash&#10;Mobile Money&#10;Card&#10;" onAction="#comboItems" onKeyPressed="#comboItems" onMouseClicked="#comboItems" prefHeight="33.0" prefWidth="244.0" GridPane.rowIndex="11" />
+                  <DatePicker fx:id="datePicker" GridPane.columnIndex="2" GridPane.rowIndex="11" />
+                  <Label text="Date" GridPane.columnIndex="2" GridPane.rowIndex="10" />
 
                     </children>
                 </GridPane>
@@ -62,7 +65,7 @@
                     </font>
                 </Label>
                 <Button fx:id="btnCancel" layoutX="238.0" layoutY="550.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: navy;" text="Cancel" textFill="WHITE" />
-                <Button fx:id="btnSave" layoutX="112.0" layoutY="550.0" mnemonicParsing="false" onAction="#addBill" style="-fx-background-color: navy;" text="Save" textFill="WHITE" />
+                <Button fx:id="btnSave" layoutX="112.0" layoutY="550.0" mnemonicParsing="false" onAction="#insert" style="-fx-background-color: navy;" text="Save" textFill="WHITE" />
             </children>
             <stylesheets>
                 <URL value="@../../../styles/PopUp.css" />

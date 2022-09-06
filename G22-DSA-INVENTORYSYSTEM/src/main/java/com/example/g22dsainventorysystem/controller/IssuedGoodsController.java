@@ -1,31 +1,70 @@
 package com.example.g22dsainventorysystem.controller;
 
 import com.example.g22dsainventorysystem.HelloApplication;
+import com.example.g22dsainventorysystem.structures.TestConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class IssuedGoodsController {
 
     @FXML
     private Button btnCancel;
+    @FXML
+    private TextArea salesProductName,salesProductQuantity,totalPrice;
+    @FXML
+    private TextField saleVendorName;
+
+    @FXML
+    private DatePicker datePicker;
+
+
 
     @FXML
     private Button btnUpdateCancel;
-    public void search_user(ActionEvent actionEvent) {
+
+    Connection connection = TestConnection.ConnectionUtil.connectdb();
+    public void insertInto(javafx.event.ActionEvent activeEvent){
+        String stateMent = "INSERT INTO `IssuedGoods`(`Quantity`, `Product_ID`, `Selling_Price`, `TotalAmount`, `Date`)VALUES(?,?,?,?,?)";
+        try {
+            PreparedStatement ps = connection.prepareStatement(stateMent);
+            ps.setString(1, String.valueOf(salesProductQuantity.getText()));
+            ps.setString(2,String.valueOf(salesProductName.getText()));
+            ps.setString(3,String.valueOf(totalPrice.getText()));
+            ps.setString(4,String.valueOf( Integer.parseInt(salesProductQuantity.getText()) * Double.parseDouble(totalPrice.getText())));
+            ps.setString(5,String.valueOf(datePicker.getValue()));
+
+
+
+            ps.executeUpdate();
+            refreshed();
+            search_user();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
-    public void refreshed(ActionEvent actionEvent) {
+
+    public void search_user() {
+    }
+
+    public void refreshed() {
     }
 
     public void getSelected(MouseEvent mouseEvent) {

@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" fx:id="acCustomerMainContent" prefHeight="509.0" prefWidth="763.0" stylesheets="@../../../styles/MainStyle.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.g22dsainventorysystem.controller.IssuedGoodsController">
+<AnchorPane id="AnchorPane" fx:id="acCustomerMainContent" prefHeight="509.0" prefWidth="763.0" stylesheets="@../../../styles/MainStyle.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.g22dsainventorysystem.controller.IssuedGoodsController">
     <children>
         <BorderPane layoutX="6.0" prefHeight="509.0" prefWidth="763.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
             <center>
                 <TableView fx:id="viewCustomer" editable="true" onMouseClicked="#getSelected" onSort="#getSelected" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: none;" BorderPane.alignment="CENTER">
                     <columns>
-                        <TableColumn fx:id="viewVendorID" prefWidth="104.0" text="Vendor_Name" />
-                        <TableColumn fx:id="viewVendorName" prefWidth="104.0" text="Product_Name" />
-                        <TableColumn fx:id="viewVendorCon" prefWidth="124.0" text="Product_Quantity" />
-                        <TableColumn fx:id="viewVendorEmail" prefWidth="137.0" text="Total_Price" />
-                        <TableColumn fx:id="viewVendorlocation" prefWidth="123.0" text="Date" />
+                        <TableColumn fx:id="viewIssuedID" prefWidth="104.0" text="Issued_ID" />
+                        <TableColumn fx:id="viewVendorName" prefWidth="104.0" text="Quantity" />
+                        <TableColumn fx:id="viewVendorCon" prefWidth="124.0" text="Product_ID" />
+                        <TableColumn fx:id="viewVendorEmail" prefWidth="137.0" text="Selling_Price" />
+                        <TableColumn fx:id="viewVendorlocation" prefWidth="123.0" text="TotalAmount" />
+                  <TableColumn fx:id="viewVendorCon1" prefWidth="124.0" text="Date" />
                         <!--                 <TableColumn fx:id="tblClmTotalBuy" prefWidth="146.0" text="Total Buy" />-->
                     </columns>
                     <columnResizePolicy>
